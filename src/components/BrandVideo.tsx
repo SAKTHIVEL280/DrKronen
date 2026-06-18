@@ -1,9 +1,42 @@
-import { Play } from 'lucide-react'
-import { useState, useRef } from 'react'
+import { Play, Volume2, VolumeX } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
 
 export default function BrandVideo() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().then(() => {
+            setIsPlaying(true)
+          }).catch((err) => {
+            console.log("Autoplay blocked or interrupted:", err)
+          })
+        } else {
+          video.pause()
+          setIsPlaying(false)
+        }
+      },
+      {
+        threshold: 0.25, // Play when 25% of the video container is visible in viewport
+      }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   const handlePlayToggle = () => {
     if (!videoRef.current) return
@@ -11,9 +44,18 @@ export default function BrandVideo() {
       videoRef.current.pause()
       setIsPlaying(false)
     } else {
-      videoRef.current.play()
-      setIsPlaying(true)
+      videoRef.current.play().then(() => {
+        setIsPlaying(true)
+      }).catch(() => {})
     }
+  }
+
+  const handleMuteToggle = (e: React.MouseEvent) => {
+    e.stopPropagation() // Prevent toggling play/pause
+    if (!videoRef.current) return
+    const newMuted = !isMuted
+    videoRef.current.muted = newMuted
+    setIsMuted(newMuted)
   }
 
   return (
@@ -29,14 +71,17 @@ export default function BrandVideo() {
       </div>
 
       {/* Elegant Video Container */}
-      <div className="relative border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950 shadow-2xl group aspect-video">
+      <div 
+        ref={containerRef}
+        className="relative border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950 shadow-2xl group aspect-video"
+      >
         <video
           ref={videoRef}
           src="/brand_video.mp4"
           loop
-          muted
+          muted={isMuted}
           playsInline
-          className="w-full h-full object-cover brightness-95"
+          className="w-full h-full object-cover brightness-95 cursor-pointer"
           onClick={handlePlayToggle}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
@@ -53,6 +98,15 @@ export default function BrandVideo() {
             </div>
           </div>
         )}
+
+        {/* Volume Mute Toggle controls */}
+        <button
+          onClick={handleMuteToggle}
+          className="absolute bottom-4 left-4 p-2.5 rounded-full border border-zinc-700 bg-zinc-900/80 text-zinc-400 hover:text-zinc-200 hover:border-zinc-400 transition-premium z-10 cursor-pointer"
+          aria-label={isMuted ? "Unmute" : "Mute"}
+        >
+          {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+        </button>
 
         {/* Control prompt info on hover */}
         <div className="absolute bottom-4 right-4 px-2 py-1 rounded bg-zinc-900/80 border border-zinc-800 text-[8px] uppercase tracking-widest text-zinc-400 font-mono opacity-0 group-hover:opacity-100 transition-premium pointer-events-none">
