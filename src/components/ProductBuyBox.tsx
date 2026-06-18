@@ -45,14 +45,14 @@ export default function ProductBuyBox({
         
         {/* Left Column: Product Interactive Viewer */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="relative group bg-zinc-900/30 border border-zinc-800 rounded-lg p-6 flex items-center justify-center min-h-[350px]">
+          <div className="relative group img-zoom-container bg-zinc-900/30 border border-zinc-800 rounded-lg p-6 flex items-center justify-center min-h-[350px]">
             <img 
               src={activeProductImage} 
               alt="Active Product View" 
-              className="max-h-[380px] object-contain cursor-pointer transition-premium filter brightness-95"
+              className="max-h-[380px] object-contain cursor-pointer filter brightness-95"
               onClick={() => onImageClick(activeProductImage)}
             />
-            <div className="absolute top-4 left-4 px-2 py-1 rounded bg-zinc-900 border border-zinc-800 text-[8px] uppercase tracking-widest text-zinc-400 font-mono">
+            <div className="absolute top-4 left-4 px-2 py-1 rounded bg-zinc-900 border border-zinc-800 text-[8px] uppercase tracking-widest text-zinc-400 font-mono z-10">
               Batch #1
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function ProductBuyBox({
           <div className="grid grid-cols-3 gap-4">
             <button 
               onClick={() => setActiveProductImage(productFrontImg)}
-              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer ${activeProductImage === productFrontImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850 hover:border-zinc-700'}`}
+              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === productFrontImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
               <img src={productFrontImg} alt="Front View" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Front</span>
@@ -69,7 +69,7 @@ export default function ProductBuyBox({
             
             <button 
               onClick={() => setActiveProductImage(productBackImg)}
-              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer ${activeProductImage === productBackImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850 hover:border-zinc-700'}`}
+              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === productBackImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
               <img src={productBackImg} alt="Back View" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Back</span>
@@ -77,7 +77,7 @@ export default function ProductBuyBox({
 
             <button 
               onClick={() => setActiveProductImage(productLabelImg)}
-              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer ${activeProductImage === productLabelImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850 hover:border-zinc-700'}`}
+              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === productLabelImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
               <img src={productLabelImg} alt="Nutritional Label" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Label</span>
@@ -85,9 +85,9 @@ export default function ProductBuyBox({
           </div>
 
           {/* Promotional Card Visual */}
-          <div className="relative group overflow-hidden rounded-lg border border-zinc-800/80 mt-4 cursor-pointer" onClick={() => onImageClick(launchOfferImg)}>
-            <img src={launchOfferImg} alt="Special launch banner" className="w-full h-auto object-cover brightness-90 group-hover:brightness-100 transition-premium" />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent flex flex-col justify-end p-5">
+          <div className="relative group img-zoom-container rounded-lg border border-zinc-800/80 mt-4 cursor-pointer" onClick={() => onImageClick(launchOfferImg)}>
+            <img src={launchOfferImg} alt="Special launch banner" className="w-full h-auto object-cover brightness-90 transition-premium" />
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent flex flex-col justify-end p-5 z-10">
               <span className="text-[9px] uppercase text-zinc-400 tracking-[0.2em] font-semibold">Verification batch</span>
               <span className="text-zinc-200 text-xs tracking-wide mt-1">Direct laboratory synthesis allocation</span>
             </div>
@@ -156,7 +156,7 @@ export default function ProductBuyBox({
           <div className="space-y-6 pt-2">
             <button 
               onClick={handleWhatsAppOrder}
-              className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-950 font-bold text-xs tracking-widest uppercase transition-premium cursor-pointer shadow-lg"
+              className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-950 font-bold text-xs tracking-widest uppercase transition-premium btn-luxury cursor-pointer shadow-lg"
             >
               <MessageSquare className="w-4 h-4 fill-current" />
               Order Allocation via WhatsApp

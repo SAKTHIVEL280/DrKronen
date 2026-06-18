@@ -45,13 +45,13 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <a 
               href="#shop" 
-              className="px-8 py-4 rounded-lg font-bold bg-brand-blue text-white hover:bg-blue-700 tracking-widest text-center uppercase transition-premium text-xs"
+              className="px-8 py-4 rounded-lg font-bold bg-brand-blue hover:bg-blue-750 text-white tracking-widest text-center uppercase transition-premium text-xs btn-luxury"
             >
               Order Direct batch
             </a>
             <a 
               href="#calculator" 
-              className="px-8 py-4 rounded-lg font-bold border border-zinc-800 hover:border-zinc-500 text-zinc-300 hover:text-zinc-100 tracking-widest text-center uppercase transition-premium text-xs bg-zinc-900/30"
+              className="px-8 py-4 rounded-lg font-bold border border-zinc-800 hover:border-zinc-500 text-zinc-300 hover:text-zinc-100 tracking-widest text-center uppercase transition-premium text-xs bg-zinc-900/30 btn-luxury"
             >
               Dosage Calculator
             </a>
@@ -66,14 +66,14 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
 
           {/* Displaying Product Mockup */}
           <div className="relative w-full max-w-[450px] flex items-center justify-center p-4">
-            <div className="relative group">
+            <div className="relative group img-zoom-container rounded-lg">
               <img 
                 src={productFrontImg} 
                 alt="Dr. Kronen Creatine Tub Mockup" 
-                className="w-full max-h-[440px] object-contain relative rounded-lg cursor-pointer transition-premium filter brightness-95 hover:brightness-100"
+                className="w-full max-h-[440px] object-contain relative cursor-pointer filter brightness-95 hover:brightness-100"
                 onClick={() => onImageClick(productFrontImg)}
               />
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 text-[9px] uppercase tracking-widest text-zinc-300 opacity-0 group-hover:opacity-100 transition-premium">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 text-[9px] uppercase tracking-widest text-zinc-300 opacity-0 group-hover:opacity-100 transition-premium z-10">
                 <Maximize2 className="w-3 h-3 text-zinc-500" /> Click to enlarge
               </div>
             </div>

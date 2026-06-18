@@ -43,7 +43,7 @@ export default function Header({ logoImg }: HeaderProps) {
             <a 
               key={link.href}
               href={link.href} 
-              className="text-zinc-400 hover:text-zinc-100 transition-premium"
+              className="text-zinc-400 hover:text-zinc-100 link-underline pb-1 transition-premium"
             >
               {link.label}
             </a>
@@ -54,7 +54,7 @@ export default function Header({ logoImg }: HeaderProps) {
         <div className="flex items-center gap-4">
           <a 
             href="#shop" 
-            className="hidden sm:inline-block px-6 py-3 rounded-lg text-xs font-bold bg-brand-blue hover:bg-blue-700 text-white tracking-widest uppercase transition-premium"
+            className="hidden sm:inline-block px-6 py-3 rounded-lg text-xs font-bold bg-brand-blue hover:bg-blue-700 text-white tracking-widest uppercase transition-premium btn-luxury"
           >
             Order Now • ₹399
           </a>
