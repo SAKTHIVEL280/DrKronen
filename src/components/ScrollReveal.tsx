@@ -12,35 +12,46 @@ export default function ScrollReveal({ children, className = '', delay = 0 }: Sc
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsIntersecting(true)
-          observer.unobserve(entry.target) // Trigger animation only once
-        }
-      },
-      {
-        threshold: 0.05, // Trigger when 5% of the section enters viewport
-        rootMargin: '0px 0px -60px 0px' // Slightly offset trigger to feel natural
-      }
-    )
+    let observer: IntersectionObserver | null = null
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
+    // Add a 100ms settling time for layout render before observing.
+    // This prevents premature triggering due to initial zero-height states on mount.
+    const timer = setTimeout(() => {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsIntersecting(true)
+            if (observer && ref.current) {
+              observer.unobserve(ref.current)
+            }
+          }
+        },
+        {
+          threshold: 0.1, // Trigger when 10% of the section is visible
+          rootMargin: '0px 0px -12% 0px' // Responsive: Offset trigger by 12% of screen height from the bottom
+        }
+      )
+
+      if (ref.current) {
+        observer.observe(ref.current)
+      }
+    }, 100)
 
     return () => {
-      observer.disconnect()
+      clearTimeout(timer)
+      if (observer) {
+        observer.disconnect()
+      }
     }
   }, [])
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isIntersecting 
           ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-6'
+          : 'opacity-0 translate-y-8'
       } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
