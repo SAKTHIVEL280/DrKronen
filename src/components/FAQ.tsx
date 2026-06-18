@@ -65,11 +65,19 @@ export default function FAQ() {
               />
             </button>
 
-            {faqOpen[index] && (
-              <div className="px-6 pb-6 pt-2 text-xs text-zinc-400 border-t border-zinc-900/60 bg-zinc-950/20 leading-relaxed tracking-wide animate-fade-in">
-                {faq.a}
+            <div 
+              className={`grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                faqOpen[index] 
+                  ? 'grid-rows-[1fr] opacity-100' 
+                  : 'grid-rows-[0fr] opacity-0 pointer-events-none'
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="px-6 pb-6 pt-3 text-xs text-zinc-400 border-t border-zinc-900/60 bg-zinc-950/20 leading-relaxed tracking-wide">
+                  {faq.a}
+                </div>
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>

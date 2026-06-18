@@ -29,7 +29,7 @@ export default function Features() {
         <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
           
           {/* Feature 1 */}
-          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium cursor-default group">
+          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium hover:-translate-y-1.5 cursor-default group">
             <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-premium group-hover:text-zinc-200 group-hover:scale-105">
               <ShieldCheck className="w-5 h-5" strokeWidth={1.5} />
             </div>
@@ -40,7 +40,7 @@ export default function Features() {
           </div>
 
           {/* Feature 2 */}
-          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium cursor-default group">
+          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium hover:-translate-y-1.5 cursor-default group">
             <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-premium group-hover:text-zinc-200 group-hover:scale-105">
               <TrendingUp className="w-5 h-5" strokeWidth={1.5} />
             </div>
@@ -51,7 +51,7 @@ export default function Features() {
           </div>
 
           {/* Feature 3 */}
-          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium cursor-default group">
+          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium hover:-translate-y-1.5 cursor-default group">
             <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-premium group-hover:text-zinc-200 group-hover:scale-105">
               <Sparkles className="w-5 h-5" strokeWidth={1.5} />
             </div>
@@ -62,7 +62,7 @@ export default function Features() {
           </div>
 
           {/* Feature 4 */}
-          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium cursor-default group">
+          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium hover:-translate-y-1.5 cursor-default group">
             <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-premium group-hover:text-zinc-200 group-hover:scale-105">
               <DumbbellIcon className="w-5 h-5" strokeWidth={1.5} />
             </div>

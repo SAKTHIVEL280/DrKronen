@@ -71,29 +71,33 @@ export default function Header({ logoImg }: HeaderProps) {
       </div>
 
       {/* Mobile Dropdown Navigation Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-24 left-0 w-full bg-zinc-950 border-b border-zinc-800 z-40">
-          <nav className="flex flex-col px-6 py-8 space-y-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={handleLinkClick}
-                className="text-zinc-300 hover:text-zinc-100 text-sm font-semibold uppercase tracking-widest transition-premium border-b border-zinc-900 pb-3"
-              >
-                {link.label}
-              </a>
-            ))}
+      <div 
+        className={`md:hidden absolute top-24 left-0 w-full bg-zinc-950 border-b border-zinc-800 z-40 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          mobileMenuOpen 
+            ? 'opacity-100 translate-y-0 visible pointer-events-auto' 
+            : 'opacity-0 -translate-y-2 invisible pointer-events-none'
+        }`}
+      >
+        <nav className="flex flex-col px-6 py-8 space-y-6">
+          {navLinks.map((link) => (
             <a
-              href="#shop"
+              key={link.href}
+              href={link.href}
               onClick={handleLinkClick}
-              className="w-full text-center px-6 py-4 rounded-lg text-xs font-bold bg-brand-blue hover:bg-blue-700 text-white tracking-widest uppercase transition-premium"
+              className="text-zinc-300 hover:text-zinc-100 text-sm font-semibold uppercase tracking-widest transition-premium border-b border-zinc-905 pb-3"
             >
-              Order Now • ₹399
+              {link.label}
             </a>
-          </nav>
-        </div>
-      )}
+          ))}
+          <a
+            href="#shop"
+            onClick={handleLinkClick}
+            className="w-full text-center px-6 py-4 rounded-lg text-xs font-bold bg-brand-blue hover:bg-blue-700 text-white tracking-widest uppercase transition-premium btn-luxury"
+          >
+            Order Now • ₹399
+          </a>
+        </nav>
+      </div>
     </header>
   )
 }

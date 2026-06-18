@@ -109,14 +109,35 @@ body {
   letter-spacing: 0.32em !important;
 }
 
-/* Elegant Luxury Button transitions */
+/* Elegant Luxury Button transitions with premium shine sweep */
 .btn-luxury {
   position: relative;
   overflow: hidden;
-  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), background-color 300ms ease, border-color 300ms ease;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), background-color 300ms ease, border-color 300ms ease, color 300ms ease, box-shadow 300ms ease;
+}
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: none;
+}
+.btn-luxury:hover::before {
+  left: 150%;
+  transition: left 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-luxury:hover {
   transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.35);
 }
 .btn-luxury:active {
   transform: translateY(0);
@@ -140,4 +161,48 @@ body {
 }
 .hairline-hover:hover {
   border-color: #52525b !important; /* zinc-600 */
+}
+
+/* Premium micro-animations for dynamic component updates */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0.95;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

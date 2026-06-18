@@ -154,7 +154,7 @@ export default function DosageCalculator() {
                 <div className="space-y-2">
                   <span className="block text-[9px] font-bold text-zinc-500 uppercase tracking-widest font-mono">Daily Dosage</span>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-serif font-light text-4xl text-zinc-100">{dailyDosage}</span>
+                    <span key={dailyDosage} className="font-serif font-light text-4xl text-zinc-100 inline-block animate-scale-up">{dailyDosage}</span>
                     <span className="text-xs font-semibold text-zinc-400">grams</span>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export default function DosageCalculator() {
                 <div className="space-y-2 pl-6">
                   <span className="block text-[9px] font-bold text-zinc-500 uppercase tracking-widest font-mono">Fluid Target</span>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-serif font-light text-4xl text-zinc-100">{waterRequirement}</span>
+                    <span key={waterRequirement} className="font-serif font-light text-4xl text-zinc-100 inline-block animate-scale-up">{waterRequirement}</span>
                     <span className="text-xs font-semibold text-zinc-400">Liters</span>
                   </div>
                 </div>
@@ -171,7 +171,10 @@ export default function DosageCalculator() {
               </div>
 
               {/* Informative advice */}
-              <div className="text-xs text-zinc-400 bg-zinc-900 border border-zinc-800 p-4 rounded-lg leading-relaxed tracking-wide">
+              <div 
+                key={formulaInfo}
+                className="text-xs text-zinc-400 bg-zinc-900 border border-zinc-800 p-4 rounded-lg leading-relaxed tracking-wide min-h-[50px] animate-fade-in"
+              >
                 {formulaInfo}
               </div>
             </div>

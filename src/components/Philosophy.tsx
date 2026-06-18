@@ -48,7 +48,7 @@ export default function Philosophy({
                 href="https://www.instagram.com/dr.kronenofficial?igsh=OGx5aHIxMWQxb3V3" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-lg border border-zinc-800 hover:border-zinc-500 hover:text-zinc-100 text-zinc-300 transition-premium text-xs font-bold uppercase tracking-widest bg-zinc-900/30"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-lg border border-zinc-800 hover:border-zinc-500 hover:text-zinc-100 text-zinc-300 transition-premium text-xs font-bold uppercase tracking-widest bg-zinc-900/30 btn-luxury"
               >
                 <InstagramIcon className="w-4 h-4 text-zinc-400" />
                 Follow the Grind
@@ -59,7 +59,7 @@ export default function Philosophy({
           {/* Right Column: Embedded Athlete Visual Block (Sleek Frame) */}
           <div className="lg:col-span-6 relative flex items-center justify-center p-2">
             <div 
-              className="relative w-full max-w-[440px] rounded-lg overflow-hidden border border-zinc-800/80 group cursor-pointer" 
+              className="relative w-full max-w-[440px] rounded-lg overflow-hidden border border-zinc-800/80 group cursor-pointer img-zoom-container" 
               onClick={() => onImageClick(modelPosterImg)}
             >
               <img 
@@ -67,7 +67,7 @@ export default function Philosophy({
                 alt="Dr. Kronen Athlete Focus representation" 
                 className="w-full h-[480px] object-cover brightness-90 group-hover:brightness-100 transition-premium"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent flex flex-col justify-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent flex flex-col justify-end p-6 z-10">
                 <span className="font-serif text-sm text-zinc-100 uppercase tracking-wider">THE ATHLETE'S GRIND</span>
                 <span className="text-[10px] text-zinc-500 uppercase tracking-widest mt-2 font-mono">Continuous physical saturation</span>
               </div>

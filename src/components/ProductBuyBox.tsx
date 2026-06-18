@@ -47,9 +47,10 @@ export default function ProductBuyBox({
         <div className="lg:col-span-5 space-y-6">
           <div className="relative group img-zoom-container bg-zinc-900/30 border border-zinc-800 rounded-lg p-6 flex items-center justify-center min-h-[350px]">
             <img 
+              key={activeProductImage}
               src={activeProductImage} 
               alt="Active Product View" 
-              className="max-h-[380px] object-contain cursor-pointer filter brightness-95"
+              className="max-h-[380px] object-contain cursor-pointer filter brightness-95 animate-scale-up"
               onClick={() => onImageClick(activeProductImage)}
             />
             <div className="absolute top-4 left-4 px-2 py-1 rounded bg-zinc-900 border border-zinc-800 text-[8px] uppercase tracking-widest text-zinc-400 font-mono z-10">
@@ -193,8 +194,7 @@ export default function ProductBuyBox({
                 Purity & Quality
               </button>
             </div>
-
-            <div className="p-6 text-xs leading-relaxed text-zinc-400 tracking-wide">
+            <div key={activeSpecTab} className="p-6 text-xs leading-relaxed text-zinc-400 tracking-wide min-h-[170px] animate-slide-up">
               {activeSpecTab === 'benefits' && (
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">

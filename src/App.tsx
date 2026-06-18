@@ -29,6 +29,7 @@ import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 import ImageModal from './components/ImageModal'
 import ScrollReveal from './components/ScrollReveal'
+import IntroLoader from './components/IntroLoader'
 
 export default function App() {
   // Global modal state for fullscreen preview
@@ -74,6 +75,9 @@ export default function App() {
 
   return (
     <div className="bg-dark-bg min-h-screen text-zinc-300 font-sans selection:bg-brand-blue selection:text-white pb-16">
+      
+      {/* 0. Premium Architectural Intro Loader */}
+      <IntroLoader />
       
       {/* 1. Header & Navigation (Always static / sticky) */}
       <Header logoImg={logoImg} />

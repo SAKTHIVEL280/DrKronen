@@ -75,25 +75,26 @@ export default function GalleryCarousel({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-zinc-900/10 border border-zinc-800/80 rounded-lg p-6 sm:p-8">
         
         {/* Left Side: Large Active Slide Image */}
-        <div className="lg:col-span-7 relative overflow-hidden rounded-lg border border-zinc-800 shadow-xl">
+        <div className="lg:col-span-7 relative overflow-hidden rounded-lg border border-zinc-800 shadow-xl img-zoom-container bg-zinc-950">
           <img 
+            key={galleryIndex}
             src={galleryImages[galleryIndex].src} 
             alt={galleryImages[galleryIndex].title} 
-            className="w-full h-[320px] sm:h-[450px] object-cover cursor-pointer brightness-95 hover:brightness-100 transition-premium"
+            className="w-full h-[320px] sm:h-[450px] object-cover cursor-pointer brightness-95 hover:brightness-100 transition-premium animate-scale-up"
             onClick={() => onImageClick(galleryImages[galleryIndex].src)}
           />
-          <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-950/80 border border-zinc-800 text-[8px] uppercase tracking-widest text-zinc-400 opacity-0 group-hover:opacity-100 transition-premium">
+          <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-950/80 border border-zinc-800 text-[8px] uppercase tracking-widest text-zinc-400 opacity-0 group-hover:opacity-100 transition-premium z-10">
             <Maximize2 className="w-3 h-3 text-zinc-500" /> Fullscreen
           </div>
         </div>
 
         {/* Right Side: Information Panel */}
-        <div className="lg:col-span-5 space-y-6">
+        <div key={galleryIndex} className="lg:col-span-5 space-y-6 animate-slide-up">
           <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-500 font-mono">Mockup Render</span>
           <h3 className="font-serif font-light text-2xl sm:text-3xl text-zinc-200 uppercase tracking-wide">
             {galleryImages[galleryIndex].title}
           </h3>
-          <p className="text-zinc-400 text-xs leading-relaxed tracking-wide">
+          <p className="text-zinc-400 text-xs leading-relaxed tracking-wide min-h-[40px]">
             {galleryImages[galleryIndex].desc}
           </p>
 
@@ -117,11 +118,11 @@ export default function GalleryCarousel({
         
         {/* Box 1 */}
         <div 
-          className="relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900/30 group cursor-pointer transition-premium" 
+          className="relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900/30 group cursor-pointer transition-premium img-zoom-container" 
           onClick={() => onImageClick(whyChooseImg)}
         >
           <img src={whyChooseImg} alt="Why Choose Poster" className="w-full h-64 object-cover brightness-90 group-hover:brightness-100 transition-premium" />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent flex flex-col justify-end p-5">
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent flex flex-col justify-end p-5 z-10">
             <span className="font-serif text-sm text-zinc-150 uppercase tracking-wider">Features Panel</span>
             <span className="text-[9px] text-zinc-500 uppercase tracking-widest mt-1.5 font-mono">Purity Standards</span>
           </div>
@@ -129,11 +130,11 @@ export default function GalleryCarousel({
 
         {/* Box 2 */}
         <div 
-          className="relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900/30 group cursor-pointer transition-premium" 
+          className="relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900/30 group cursor-pointer transition-premium img-zoom-container" 
           onClick={() => onImageClick(threeTubsDarkImg)}
         >
           <img src={threeTubsDarkImg} alt="3 Tubs Dark Display" className="w-full h-64 object-cover brightness-90 group-hover:brightness-100 transition-premium" />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent flex flex-col justify-end p-5">
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent flex flex-col justify-end p-5 z-10">
             <span className="font-serif text-sm text-zinc-150 uppercase tracking-wider">Triple Angle Mockup</span>
             <span className="text-[9px] text-zinc-500 uppercase tracking-widest mt-1.5 font-mono">Dark Space rendering</span>
           </div>
@@ -141,11 +142,11 @@ export default function GalleryCarousel({
 
         {/* Box 3 */}
         <div 
-          className="relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900/30 group cursor-pointer transition-premium" 
+          className="relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900/30 group cursor-pointer transition-premium img-zoom-container" 
           onClick={() => onImageClick(waterSplashPosterImg)}
         >
           <img src={waterSplashPosterImg} alt="Light Water Splash" className="w-full h-64 object-cover brightness-90 group-hover:brightness-100 transition-premium" />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent flex flex-col justify-end p-5">
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent flex flex-col justify-end p-5 z-10">
             <span className="font-serif text-sm text-zinc-150 uppercase tracking-wider">Purity active display</span>
             <span className="text-[9px] text-zinc-500 uppercase tracking-widest mt-1.5 font-mono">Water splash render</span>
           </div>
