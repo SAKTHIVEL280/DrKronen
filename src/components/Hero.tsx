@@ -68,17 +68,17 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
               <img 
                 src={productFrontImg} 
                 alt="Dr. Kronen Creatine Tub Mockup" 
-                className="w-full max-h-[440px] object-contain relative cursor-pointer filter brightness-95 hover:brightness-100 scale-[1.7] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.78]"
+                className="w-full max-h-[440px] object-contain relative cursor-pointer filter brightness-95 hover:brightness-100 scale-[1.2] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.25]"
                 onClick={() => onImageClick(productFrontImg)}
               />
-              <div className="absolute bottom-[-16px] left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 text-[9px] uppercase tracking-widest text-zinc-300 opacity-0 group-hover:opacity-100 transition-premium z-10 whitespace-nowrap">
+              <div className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 text-[9px] uppercase tracking-widest text-zinc-300 opacity-0 group-hover:opacity-100 transition-premium z-10 whitespace-nowrap">
                 <Maximize2 className="w-3 h-3 text-zinc-500" /> Click to enlarge
               </div>
             </div>
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-8 flex flex-wrap gap-4 items-center justify-center text-[10px] text-zinc-400 tracking-wider uppercase opacity-0 animate-fade-in animation-delay-500 animation-fill-both font-semibold">
+          <div className="mt-16 flex flex-wrap gap-4 items-center justify-center text-[10px] text-zinc-400 tracking-wider uppercase opacity-0 animate-fade-in animation-delay-500 animation-fill-both font-semibold">
             <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-zinc-500" strokeWidth={2} /> Premium Quality</span>
             <span className="text-zinc-700">•</span>
             <span className="flex items-center gap-1.5"><Droplet className="w-3.5 h-3.5 text-zinc-500" strokeWidth={2} /> Micronized Blend</span>
