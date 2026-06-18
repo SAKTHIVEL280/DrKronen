@@ -28,6 +28,7 @@ import DosageCalculator from './components/DosageCalculator'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 import ImageModal from './components/ImageModal'
+import ScrollReveal from './components/ScrollReveal'
 
 export default function App() {
   // Global modal state for fullscreen preview
@@ -74,51 +75,67 @@ export default function App() {
   return (
     <div className="bg-dark-bg min-h-screen text-zinc-300 font-sans selection:bg-brand-blue selection:text-white pb-16">
       
-      {/* 1. Header & Navigation (Mobile Responsive) */}
+      {/* 1. Header & Navigation (Always static / sticky) */}
       <Header logoImg={logoImg} />
 
-      {/* 2. Hero Section */}
-      <Hero 
-        productFrontImg={productFrontImg} 
-        onImageClick={setPreviewImage} 
-      />
+      {/* 2. Hero Section (Immediate load entry) */}
+      <ScrollReveal delay={150}>
+        <Hero 
+          productFrontImg={productFrontImg} 
+          onImageClick={setPreviewImage} 
+        />
+      </ScrollReveal>
 
-      {/* 3. Product Buy Box & Checkout Details (Folded FSSAI & Certifications Inside) */}
-      <ProductBuyBox 
-        productFrontImg={productFrontImg}
-        productBackImg={productBackImg}
-        productLabelImg={productLabelImg}
-        launchOfferImg={launchOfferImg}
-        onImageClick={setPreviewImage}
-      />
+      {/* 3. Product Buy Box & Checkout Details */}
+      <ScrollReveal>
+        <ProductBuyBox 
+          productFrontImg={productFrontImg}
+          productBackImg={productBackImg}
+          productLabelImg={productLabelImg}
+          launchOfferImg={launchOfferImg}
+          onImageClick={setPreviewImage}
+        />
+      </ScrollReveal>
 
       {/* 4. Features Grid */}
-      <Features />
+      <ScrollReveal>
+        <Features />
+      </ScrollReveal>
 
-      {/* 5. Philosophy Narrative Section (With embedded athlete grind visual) */}
-      <Philosophy 
-        threeTubsDarkImg={threeTubsDarkImg}
-        modelPosterImg={modelPosterImg}
-        onImageClick={setPreviewImage}
-      />
+      {/* 5. Philosophy Narrative Section */}
+      <ScrollReveal>
+        <Philosophy 
+          threeTubsDarkImg={threeTubsDarkImg}
+          modelPosterImg={modelPosterImg}
+          onImageClick={setPreviewImage}
+        />
+      </ScrollReveal>
 
       {/* 6. Image Carousel Exhibition */}
-      <GalleryCarousel 
-        galleryImages={galleryImages}
-        whyChooseImg={whyChooseImg}
-        threeTubsDarkImg={threeTubsDarkImg}
-        waterSplashPosterImg={waterSplashPosterImg}
-        onImageClick={setPreviewImage}
-      />
+      <ScrollReveal>
+        <GalleryCarousel 
+          galleryImages={galleryImages}
+          whyChooseImg={whyChooseImg}
+          threeTubsDarkImg={threeTubsDarkImg}
+          waterSplashPosterImg={waterSplashPosterImg}
+          onImageClick={setPreviewImage}
+        />
+      </ScrollReveal>
 
       {/* 7. Science-Based Dosage Calculator */}
-      <DosageCalculator />
+      <ScrollReveal>
+        <DosageCalculator />
+      </ScrollReveal>
 
       {/* 8. FAQ Section */}
-      <FAQ />
+      <ScrollReveal>
+        <FAQ />
+      </ScrollReveal>
 
       {/* 9. Footer Section */}
-      <Footer logoImg={logoImg} />
+      <ScrollReveal>
+        <Footer logoImg={logoImg} />
+      </ScrollReveal>
 
       {/* 10. Screen-Wide Visual Zoom Lightbox Modal */}
       <ImageModal 
