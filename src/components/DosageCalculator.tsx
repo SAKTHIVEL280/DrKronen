@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Activity, Info } from 'lucide-react'
+import { Activity, Info, Minus, Plus } from 'lucide-react'
 
 export default function DosageCalculator() {
   const [weight, setWeight] = useState<number>(70)
@@ -76,20 +76,34 @@ export default function DosageCalculator() {
                   <span className="text-[10px] text-zinc-500 font-mono">{weight} {weightUnit}</span>
                 </div>
                 
-                {/* Numeric Input & Unit Selector */}
-                <div className="flex rounded-lg bg-zinc-900 border border-zinc-800 p-1 mb-2">
+                {/* Numeric Input with custom decrement / increment buttons & Unit Selector */}
+                <div className="flex items-center rounded-lg bg-zinc-900 border border-zinc-800 p-1 mb-2">
+                  <button 
+                    onClick={() => setWeight((w) => Math.max(30, w - 1))}
+                    className="p-2.5 text-zinc-500 hover:text-zinc-200 transition-premium cursor-pointer active:scale-90"
+                    aria-label="Decrease Weight"
+                  >
+                    <Minus className="w-3.5 h-3.5" />
+                  </button>
                   <input 
                     type="number" 
                     value={weight} 
                     onChange={(e) => setWeight(Math.max(10, parseInt(e.target.value) || 0))}
-                    className="w-full bg-transparent border-none outline-none px-3 py-2 text-zinc-100 font-serif font-bold text-lg"
+                    className="w-full bg-transparent border-none outline-none px-2 py-2 text-zinc-100 font-serif font-bold text-lg text-center"
                     min="30"
                     max="300"
                   />
+                  <button 
+                    onClick={() => setWeight((w) => Math.min(300, w + 1))}
+                    className="p-2.5 text-zinc-500 hover:text-zinc-200 transition-premium cursor-pointer active:scale-90 mr-2"
+                    aria-label="Increase Weight"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                  </button>
                   <select 
                     value={weightUnit} 
                     onChange={(e) => setWeightUnit(e.target.value as 'kg' | 'lbs')}
-                    className="bg-zinc-800 border-none outline-none rounded px-3 text-[10px] uppercase font-bold text-zinc-400 cursor-pointer"
+                    className="bg-zinc-800 border-none outline-none rounded px-3 py-2 text-[10px] uppercase font-bold text-zinc-400 cursor-pointer"
                   >
                     <option value="kg">kg</option>
                     <option value="lbs">lbs</option>
@@ -110,16 +124,23 @@ export default function DosageCalculator() {
               {/* Intensity triggers */}
               <div className="space-y-3">
                 <label className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400">Workout Intensity</label>
-                <div className="grid grid-cols-2 gap-2 p-1 rounded-lg bg-zinc-900 border border-zinc-800">
+                <div className="relative grid grid-cols-2 p-1 rounded-lg bg-zinc-900 border border-zinc-800">
+                  {/* Sliding backdrop indicator */}
+                  <div 
+                    className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-zinc-800 rounded transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none"
+                    style={{
+                      transform: intensity === 'moderate' ? 'translateX(0)' : 'translateX(100%)'
+                    }}
+                  />
                   <button 
                     onClick={() => setIntensity('moderate')}
-                    className={`py-2 px-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${intensity === 'moderate' ? 'bg-zinc-800 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
+                    className={`relative z-10 py-2 px-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${intensity === 'moderate' ? 'text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
                   >
                     Moderate
                   </button>
                   <button 
                     onClick={() => setIntensity('intense')}
-                    className={`py-2 px-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${intensity === 'intense' ? 'bg-zinc-800 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
+                    className={`relative z-10 py-2 px-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${intensity === 'intense' ? 'text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
                   >
                     Gym / Lift
                   </button>
@@ -130,16 +151,23 @@ export default function DosageCalculator() {
             {/* Strategy Selectors */}
             <div className="space-y-3">
               <label className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400">Schedule Strategy</label>
-              <div className="grid grid-cols-2 gap-4 p-1 rounded-lg bg-zinc-900 border border-zinc-800">
+              <div className="relative grid grid-cols-2 p-1 rounded-lg bg-zinc-900 border border-zinc-800">
+                {/* Sliding backdrop indicator */}
+                <div 
+                  className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-zinc-800 rounded transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none"
+                  style={{
+                    transform: phase === 'maintenance' ? 'translateX(0)' : 'translateX(100%)'
+                  }}
+                />
                 <button 
                   onClick={() => setPhase('maintenance')}
-                  className={`py-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${phase === 'maintenance' ? 'bg-zinc-800 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
+                  className={`relative z-10 py-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${phase === 'maintenance' ? 'text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
                 >
                   Maintenance
                 </button>
                 <button 
                   onClick={() => setPhase('loading')}
-                  className={`py-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${phase === 'loading' ? 'bg-zinc-800 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
+                  className={`relative z-10 py-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${phase === 'loading' ? 'text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
                 >
                   Loading Phase
                 </button>

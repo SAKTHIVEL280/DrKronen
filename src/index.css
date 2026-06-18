@@ -216,3 +216,61 @@ input[type="number"] {
 .animate-scale-up {
   animation: scaleUp 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Luxury zero-gravity float animation */
+@keyframes luxuryFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-luxury-float {
+  animation: luxuryFloat 7000ms cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Luxury scroll gravity pulse animation */
+@keyframes scrollPulse {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, 8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 0.3;
+  }
+}
+
+.animate-scroll-pulse {
+  animation: scrollPulse 2200ms ease-in-out infinite;
+}
+
+/* Staggered animation delays for high-end staggered entrances */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+.animation-fill-both {
+  animation-fill-mode: both;
+}
+

@@ -29,45 +29,45 @@ export default function Features() {
         <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
           
           {/* Feature 1 */}
-          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium hover:-translate-y-1.5 cursor-default group">
-            <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-premium group-hover:text-zinc-200 group-hover:scale-105">
+          <div className="space-y-4 p-6 rounded-lg border border-zinc-900 bg-zinc-900/5 hover:border-zinc-800 hover:bg-zinc-900/20 transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 cursor-default group">
+            <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-150 group-hover:scale-105">
               <ShieldCheck className="w-5 h-5" strokeWidth={1.5} />
             </div>
-            <h4 className="font-serif font-medium text-base text-zinc-200 uppercase tracking-widest transition-premium group-hover:text-zinc-100">100% Raw Purity</h4>
-            <p className="text-zinc-500 text-xs leading-relaxed tracking-wide transition-premium group-hover:text-zinc-400">
+            <h4 className="font-serif font-medium text-base text-zinc-250 uppercase tracking-widest transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-100">100% Raw Purity</h4>
+            <p className="text-zinc-550 text-xs leading-relaxed tracking-wide transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-400">
               Zero added sucrose, artificial coloring, or silicon dioxide fillers. Pure laboratory synthesis micronized creatine monohydrate.
             </p>
           </div>
 
           {/* Feature 2 */}
-          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium hover:-translate-y-1.5 cursor-default group">
-            <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-premium group-hover:text-zinc-200 group-hover:scale-105">
+          <div className="space-y-4 p-6 rounded-lg border border-zinc-900 bg-zinc-900/5 hover:border-zinc-800 hover:bg-zinc-900/20 transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 cursor-default group">
+            <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-150 group-hover:scale-105">
               <TrendingUp className="w-5 h-5" strokeWidth={1.5} />
             </div>
-            <h4 className="font-serif font-medium text-base text-zinc-200 uppercase tracking-widest transition-premium group-hover:text-zinc-100">Honest Costing</h4>
-            <p className="text-zinc-500 text-xs leading-relaxed tracking-wide transition-premium group-hover:text-zinc-400">
+            <h4 className="font-serif font-medium text-base text-zinc-250 uppercase tracking-widest transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-100">Honest Costing</h4>
+            <p className="text-zinc-550 text-xs leading-relaxed tracking-wide transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-400">
               We price each unit at the true, uninflated valuation of chemical synthesis. You acquire the direct asset, not marketing fluff.
             </p>
           </div>
 
           {/* Feature 3 */}
-          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium hover:-translate-y-1.5 cursor-default group">
-            <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-premium group-hover:text-zinc-200 group-hover:scale-105">
+          <div className="space-y-4 p-6 rounded-lg border border-zinc-900 bg-zinc-900/5 hover:border-zinc-800 hover:bg-zinc-900/20 transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 cursor-default group">
+            <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-150 group-hover:scale-105">
               <Sparkles className="w-5 h-5" strokeWidth={1.5} />
             </div>
-            <h4 className="font-serif font-medium text-base text-zinc-200 uppercase tracking-widest transition-premium group-hover:text-zinc-100">Micronized Mixability</h4>
-            <p className="text-zinc-500 text-xs leading-relaxed tracking-wide transition-premium group-hover:text-zinc-400">
+            <h4 className="font-serif font-medium text-base text-zinc-250 uppercase tracking-widest transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-100">Micronized Mixability</h4>
+            <p className="text-zinc-550 text-xs leading-relaxed tracking-wide transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-400">
               Engineered using advanced micro-milling synthesis to reduce particle sizes for optimal suspension and mixability.
             </p>
           </div>
 
           {/* Feature 4 */}
-          <div className="space-y-4 p-6 rounded-lg border border-transparent hover:border-zinc-800 bg-transparent hover:bg-zinc-900/10 transition-premium hover:-translate-y-1.5 cursor-default group">
-            <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-premium group-hover:text-zinc-200 group-hover:scale-105">
+          <div className="space-y-4 p-6 rounded-lg border border-zinc-900 bg-zinc-900/5 hover:border-zinc-800 hover:bg-zinc-900/20 transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 cursor-default group">
+            <div className="h-8 w-8 text-zinc-500 flex items-center justify-start transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-150 group-hover:scale-105">
               <DumbbellIcon className="w-5 h-5" strokeWidth={1.5} />
             </div>
-            <h4 className="font-serif font-medium text-base text-zinc-200 uppercase tracking-widest transition-premium group-hover:text-zinc-100">Thoroughly Researched</h4>
-            <p className="text-zinc-500 text-xs leading-relaxed tracking-wide transition-premium group-hover:text-zinc-400">
+            <h4 className="font-serif font-medium text-base text-zinc-250 uppercase tracking-widest transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-100">Thoroughly Researched</h4>
+            <p className="text-zinc-550 text-xs leading-relaxed tracking-wide transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zinc-400">
               Creatine Monohydrate remains the single most rigorously examined athletic supplement globally, backed by robust clinical trials.
             </p>
           </div>

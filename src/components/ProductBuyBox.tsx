@@ -172,24 +172,35 @@ export default function ProductBuyBox({
             </div>
           </div>
 
-          {/* Interactive Spec Tabs (Architectural minimal underlines) */}
+          {/* Interactive Spec Tabs (Architectural minimal sliding highlights) */}
           <div className="border border-zinc-800/80 rounded-lg overflow-hidden bg-zinc-900/10">
-            <div className="flex border-b border-zinc-800 bg-zinc-900/30">
+            <div className="relative flex border-b border-zinc-800 bg-zinc-900/30">
+              {/* Smooth sliding backdrop and active indicator bar */}
+              <div 
+                className="absolute top-0 bottom-0 left-0 w-1/3 bg-zinc-800/40 border-b-2 border-zinc-300 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none"
+                style={{
+                  transform: 
+                    activeSpecTab === 'benefits' ? 'translateX(0)' :
+                    activeSpecTab === 'nutrition' ? 'translateX(100%)' :
+                    'translateX(200%)'
+                }}
+              />
+              
               <button 
                 onClick={() => setActiveSpecTab('benefits')}
-                className={`flex-1 py-4 text-[10px] font-bold uppercase tracking-widest border-b-2 cursor-pointer transition-premium ${activeSpecTab === 'benefits' ? 'border-zinc-300 text-zinc-100' : 'border-transparent text-zinc-500 hover:text-zinc-300'}`}
+                className={`relative z-10 flex-1 py-4 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${activeSpecTab === 'benefits' ? 'text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
               >
                 Key Benefits
               </button>
               <button 
                 onClick={() => setActiveSpecTab('nutrition')}
-                className={`flex-1 py-4 text-[10px] font-bold uppercase tracking-widest border-b-2 cursor-pointer transition-premium ${activeSpecTab === 'nutrition' ? 'border-zinc-300 text-zinc-100' : 'border-transparent text-zinc-500 hover:text-zinc-300'}`}
+                className={`relative z-10 flex-1 py-4 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${activeSpecTab === 'nutrition' ? 'text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
               >
                 Nutritional Facts
               </button>
               <button 
                 onClick={() => setActiveSpecTab('purity')}
-                className={`flex-1 py-4 text-[10px] font-bold uppercase tracking-widest border-b-2 cursor-pointer transition-premium ${activeSpecTab === 'purity' ? 'border-zinc-300 text-zinc-100' : 'border-transparent text-zinc-500 hover:text-zinc-300'}`}
+                className={`relative z-10 flex-1 py-4 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${activeSpecTab === 'purity' ? 'text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
               >
                 Purity & Quality
               </button>
