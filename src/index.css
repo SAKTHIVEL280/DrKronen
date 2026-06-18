@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+  --font-serif: 'Cinzel', serif;
+  
+  --color-dark-bg: #09090b;       /* Zinc-950 equivalent */
+  --color-dark-surface: #121214;  /* Muted zinc surface */
+  --color-dark-card: #18181b;     /* Zinc-900 equivalent */
+  --color-brand-blue: #2563eb;    /* Muted premium blue */
+  --color-brand-accent: #60a5fa;  /* soft blue tint */
+  --color-brand-gray: #27272a;    /* Zinc-800 equivalent */
+}
+
+/* Base resets and smooth behaviors */
+html {
+  scroll-behavior: smooth;
+  background-color: #09090b;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: #f4f4f5;
+  background-color: var(--color-dark-bg);
+  overflow-x: hidden;
+  letter-spacing: 0.025em; /* default subtle letter tracking */
+}
+
+/* Custom Architectural Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Root sizing override */
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  border: none !important;
+  text-align: left !important;
+  display: block !important;
+}
+
+/* Flat, Premium Panel styling (Replacing glowing drop shadows) */
+.glass-panel {
+  background: #18181b;
+  border: 1px solid #27272a;
+}
+
+.glass-panel-light {
+  background: #27272a;
+  border: 1px solid #3f3f46;
+}
+
+/* Luxury Metal Text effect */
+.text-metallic {
+  background: linear-gradient(135deg, #ffffff 40%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* High-end transitions (300ms ease-in-out) */
+.transition-premium {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}

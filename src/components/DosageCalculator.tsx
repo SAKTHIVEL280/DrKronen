@@ -1,0 +1,185 @@
+import { useState } from 'react'
+import { Activity, Info } from 'lucide-react'
+
+export default function DosageCalculator() {
+  const [weight, setWeight] = useState<number>(70)
+  const [weightUnit, setWeightUnit] = useState<'kg' | 'lbs'>('kg')
+  const [intensity, setIntensity] = useState<'moderate' | 'intense'>('intense')
+  const [phase, setPhase] = useState<'loading' | 'maintenance'>('maintenance')
+
+  // Convert weight to kg for standard scaling
+  const weightInKg = weightUnit === 'lbs' ? weight * 0.453592 : weight
+
+  let dailyDosage: number
+  let waterRequirement: number
+  let formulaInfo: string
+
+  if (phase === 'loading') {
+    dailyDosage = 20
+    waterRequirement = 5.0
+    formulaInfo = 'Loading Strategy: Saturate your muscles quickly by taking 20g daily, split into 4 servings of 5g (Morning, Pre-Workout, Post-Workout, Evening) for 5-7 days.'
+  } else {
+    // Continuous scientific scaling: 0.05g/kg for moderate, 0.07g/kg for intense gym sessions
+    const multiplier = intensity === 'intense' ? 0.07 : 0.05
+    dailyDosage = weightInKg * multiplier
+    // Clamp values between 3g and 10g for safety and practicality, round to 1 decimal place
+    dailyDosage = Math.round(Math.max(3, Math.min(10, dailyDosage)) * 10) / 10
+
+    // Hydration: base fluid requirements (0.05L per kg weight) + exercise factor
+    const baseHydration = weightInKg * 0.05
+    const intensityAddon = intensity === 'intense' ? 0.5 : 0
+    waterRequirement = baseHydration + intensityAddon
+    // Clamp water target between 3L and 6L, round to 1 decimal place
+    waterRequirement = Math.round(Math.max(3, Math.min(6, waterRequirement)) * 10) / 10
+
+    formulaInfo = `Maintenance Strategy (Science-scaled): Take ${dailyDosage}g of micronized creatine monohydrate once daily (ideally post-workout) combined with a carbohydrate carrier to optimize muscle uptake.`
+  }
+
+  return (
+    <section id="calculator" className="relative max-w-7xl mx-auto px-6 py-28 bg-dark-bg border-t border-zinc-800/80">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        
+        {/* Left Column: Descriptive info */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-semibold text-zinc-400 w-fit uppercase tracking-widest font-mono">
+            <Activity className="w-3.5 h-3.5 text-zinc-500" />
+            Calculator Module
+          </div>
+          
+          <h2 className="font-serif font-light text-4xl sm:text-5xl text-zinc-100 leading-tight uppercase tracking-wider">
+            DOSAGE PROFILE
+          </h2>
+          
+          <p className="text-zinc-500 text-sm leading-relaxed tracking-wide">
+            Supplementation parameters calculated dynamically. Input your body metrics to determine recommended daily micronized intake and target hydration coefficients.
+          </p>
+
+          <div className="p-5 rounded-lg bg-zinc-900/40 border border-zinc-800 space-y-3">
+            <div className="flex gap-2 items-center text-[10px] font-bold tracking-widest uppercase text-zinc-400 font-mono">
+              <Info className="w-4 h-4 text-zinc-500" /> Hydration mandate
+            </div>
+            <p className="text-xs text-zinc-500 leading-relaxed tracking-wide">
+              Intracellular fluid absorption requires consistent hydration. Water targets prevent renal stress and maximize muscular volume retention.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Column: Interactive inputs and results */}
+        <div className="lg:col-span-7 bg-zinc-900/10 border border-zinc-800 rounded-lg p-6 sm:p-8 lg:p-10">
+          <div className="space-y-6">
+            
+            {/* Weight inputs */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400">Body Weight</label>
+                  <span className="text-[10px] text-zinc-500 font-mono">{weight} {weightUnit}</span>
+                </div>
+                
+                {/* Numeric Input & Unit Selector */}
+                <div className="flex rounded-lg bg-zinc-900 border border-zinc-800 p-1 mb-2">
+                  <input 
+                    type="number" 
+                    value={weight} 
+                    onChange={(e) => setWeight(Math.max(10, parseInt(e.target.value) || 0))}
+                    className="w-full bg-transparent border-none outline-none px-3 py-2 text-zinc-100 font-serif font-bold text-lg"
+                    min="30"
+                    max="300"
+                  />
+                  <select 
+                    value={weightUnit} 
+                    onChange={(e) => setWeightUnit(e.target.value as 'kg' | 'lbs')}
+                    className="bg-zinc-800 border-none outline-none rounded px-3 text-[10px] uppercase font-bold text-zinc-400 cursor-pointer"
+                  >
+                    <option value="kg">kg</option>
+                    <option value="lbs">lbs</option>
+                  </select>
+                </div>
+
+                {/* Range Slider */}
+                <input
+                  type="range"
+                  min={weightUnit === 'kg' ? '40' : '90'}
+                  max={weightUnit === 'kg' ? '150' : '330'}
+                  value={weight}
+                  onChange={(e) => setWeight(parseInt(e.target.value))}
+                  className="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-zinc-300"
+                />
+              </div>
+
+              {/* Intensity triggers */}
+              <div className="space-y-3">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400">Workout Intensity</label>
+                <div className="grid grid-cols-2 gap-2 p-1 rounded-lg bg-zinc-900 border border-zinc-800">
+                  <button 
+                    onClick={() => setIntensity('moderate')}
+                    className={`py-2 px-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${intensity === 'moderate' ? 'bg-zinc-800 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
+                  >
+                    Moderate
+                  </button>
+                  <button 
+                    onClick={() => setIntensity('intense')}
+                    className={`py-2 px-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${intensity === 'intense' ? 'bg-zinc-800 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
+                  >
+                    Gym / Lift
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Strategy Selectors */}
+            <div className="space-y-3">
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-zinc-400">Schedule Strategy</label>
+              <div className="grid grid-cols-2 gap-4 p-1 rounded-lg bg-zinc-900 border border-zinc-800">
+                <button 
+                  onClick={() => setPhase('maintenance')}
+                  className={`py-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${phase === 'maintenance' ? 'bg-zinc-800 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
+                >
+                  Maintenance
+                </button>
+                <button 
+                  onClick={() => setPhase('loading')}
+                  className={`py-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-premium ${phase === 'loading' ? 'bg-zinc-800 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`}
+                >
+                  Loading Phase
+                </button>
+              </div>
+            </div>
+
+            {/* Dynamic Results Display */}
+            <div className="border border-zinc-800/80 rounded-lg bg-zinc-900/30 p-6 space-y-6">
+              <div className="grid grid-cols-2 gap-6 divide-x divide-zinc-850">
+                
+                {/* Dosage Result */}
+                <div className="space-y-2">
+                  <span className="block text-[9px] font-bold text-zinc-500 uppercase tracking-widest font-mono">Daily Dosage</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-serif font-light text-4xl text-zinc-100">{dailyDosage}</span>
+                    <span className="text-xs font-semibold text-zinc-400">grams</span>
+                  </div>
+                </div>
+
+                {/* Hydration Result */}
+                <div className="space-y-2 pl-6">
+                  <span className="block text-[9px] font-bold text-zinc-500 uppercase tracking-widest font-mono">Fluid Target</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-serif font-light text-4xl text-zinc-100">{waterRequirement}</span>
+                    <span className="text-xs font-semibold text-zinc-400">Liters</span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Informative advice */}
+              <div className="text-xs text-zinc-400 bg-zinc-900 border border-zinc-800 p-4 rounded-lg leading-relaxed tracking-wide">
+                {formulaInfo}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  )
+}
