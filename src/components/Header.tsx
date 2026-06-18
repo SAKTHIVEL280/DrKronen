@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { InstagramIcon } from './Icons'
 
 interface HeaderProps {
   logoImg: string
@@ -51,7 +52,17 @@ export default function Header({ logoImg }: HeaderProps) {
         </nav>
 
         {/* CTA & Mobile Hamburger */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <a 
+            href="https://www.instagram.com/dr.kronenofficial?igsh=OGx5aHIxMWQxb3V3" 
+            target="_blank" 
+            rel="noreferrer"
+            className="hidden md:flex items-center justify-center p-3 rounded-lg border border-zinc-800 text-zinc-400 hover:border-zinc-500 hover:text-zinc-100 transition-premium cursor-pointer"
+            aria-label="Instagram Link"
+          >
+            <InstagramIcon className="w-4.5 h-4.5" />
+          </a>
+
           <a 
             href="#shop" 
             className="hidden sm:inline-block px-6 py-3 rounded-lg text-xs font-bold bg-brand-blue hover:bg-blue-700 text-white tracking-widest uppercase transition-premium btn-luxury"
@@ -95,6 +106,15 @@ export default function Header({ logoImg }: HeaderProps) {
             className="w-full text-center px-6 py-4 rounded-lg text-xs font-bold bg-brand-blue hover:bg-blue-700 text-white tracking-widest uppercase transition-premium btn-luxury"
           >
             Order Now • ₹399
+          </a>
+          <a
+            href="https://www.instagram.com/dr.kronenofficial?igsh=OGx5aHIxMWQxb3V3" 
+            target="_blank" 
+            rel="noreferrer"
+            className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-lg border border-zinc-800 text-zinc-350 text-xs font-bold uppercase tracking-widest transition-premium"
+          >
+            <InstagramIcon className="w-4 h-4" />
+            Instagram
           </a>
         </nav>
       </div>

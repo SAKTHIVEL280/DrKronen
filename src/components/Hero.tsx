@@ -16,9 +16,8 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
             Pure Creatine Monohydrate
           </div>
 
-          <h1 className="font-serif font-light text-5xl sm:text-6xl xl:text-7xl leading-[1.15] text-metallic tracking-wider uppercase">
-            BUILD STRENGTH.<br />
-            <span className="text-zinc-500">BUILT IN SILENCE.</span>
+          <h1 className="font-serif font-bold text-5xl sm:text-6xl xl:text-7xl leading-[1.15] text-metallic tracking-wider uppercase">
+            BUILT IN SILENCE
           </h1>
 
           <p className="text-zinc-400 text-base leading-relaxed tracking-wide max-w-lg">

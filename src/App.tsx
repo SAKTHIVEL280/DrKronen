@@ -30,6 +30,7 @@ import Footer from './components/Footer'
 import ImageModal from './components/ImageModal'
 import ScrollReveal from './components/ScrollReveal'
 import IntroLoader from './components/IntroLoader'
+import BrandVideo from './components/BrandVideo'
 
 export default function App() {
   // Global modal state for fullscreen preview
@@ -113,6 +114,11 @@ export default function App() {
           modelPosterImg={modelPosterImg}
           onImageClick={setPreviewImage}
         />
+      </ScrollReveal>
+
+      {/* 5.5. Cinematic Brand Showcase Video */}
+      <ScrollReveal>
+        <BrandVideo />
       </ScrollReveal>
 
       {/* 6. Image Carousel Exhibition */}
