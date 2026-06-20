@@ -1,7 +1,11 @@
 import { Play, Volume2, VolumeX } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
-export default function BrandVideo() {
+interface BrandVideoProps {
+  logoImg: string
+}
+
+export default function BrandVideo({ logoImg }: BrandVideoProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -108,8 +112,17 @@ export default function BrandVideo() {
           {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
         </button>
 
+        {/* Brand / Video Watermark Overlay (Covers Google Veo Star Logo) */}
+        <div className="absolute bottom-[12.5%] right-[7.2%] z-10 select-none pointer-events-none transition-all duration-300">
+          <img 
+            src={logoImg} 
+            alt="Dr. Kronen Logo" 
+            className="w-12 h-12 md:w-14 md:h-14 rounded-xl border border-zinc-800 bg-zinc-950/95 shadow-2xl p-1.5"
+          />
+        </div>
+
         {/* Control prompt info on hover */}
-        <div className="absolute bottom-4 right-4 px-2 py-1 rounded bg-zinc-900/80 border border-zinc-800 text-[8px] uppercase tracking-widest text-zinc-400 font-mono opacity-0 group-hover:opacity-100 transition-premium pointer-events-none">
+        <div className="absolute bottom-14 right-4 px-2 py-1 rounded bg-zinc-900/80 border border-zinc-800 text-[8px] uppercase tracking-widest text-zinc-400 font-mono opacity-0 group-hover:opacity-100 transition-premium pointer-events-none z-10">
           Click to {isPlaying ? 'Pause' : 'Play'}
         </div>
       </div>

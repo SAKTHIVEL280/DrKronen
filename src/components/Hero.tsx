@@ -13,7 +13,7 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
         {/* Hero Content (Left) */}
         <div className="lg:col-span-6 flex flex-col justify-center space-y-6 max-w-lg">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-[0.25em] opacity-0 animate-fade-in animation-fill-both">
-            Pure Creatine Monohydrate
+            Pure Creatine Monohydrate • 250g
           </div>
 
           <h1 className="font-serif font-normal text-4xl sm:text-5xl xl:text-6xl leading-[1.25] text-metallic tracking-[0.08em] uppercase opacity-0 animate-slide-up animation-delay-100 animation-fill-both">
@@ -25,7 +25,7 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
           </p>
 
           {/* Quick Stats Grid */}
-          <div className="grid grid-cols-3 gap-6 border-y border-zinc-800/80 py-6 opacity-0 animate-slide-up animation-delay-300 animation-fill-both">
+          <div className="grid grid-cols-4 gap-4 border-y border-zinc-800/80 py-6 opacity-0 animate-slide-up animation-delay-300 animation-fill-both">
             <div className="flex flex-col text-left">
               <span className="text-zinc-100 font-serif font-normal text-2xl tracking-wide">100%</span>
               <span className="text-[10px] text-zinc-400 uppercase tracking-[0.18em] mt-1.5 font-sans font-semibold">Purity</span>
@@ -33,6 +33,10 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
             <div className="flex flex-col text-left">
               <span className="text-zinc-100 font-serif font-normal text-2xl tracking-wide">50</span>
               <span className="text-[10px] text-zinc-400 uppercase tracking-[0.18em] mt-1.5 font-sans font-semibold">Servings</span>
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-zinc-100 font-serif font-normal text-2xl tracking-wide">250</span>
+              <span className="text-[10px] text-zinc-400 uppercase tracking-[0.18em] mt-1.5 font-sans font-semibold">Grams</span>
             </div>
             <div className="flex flex-col text-left">
               <span className="text-zinc-100 font-serif font-normal text-2xl tracking-wide">₹399</span>

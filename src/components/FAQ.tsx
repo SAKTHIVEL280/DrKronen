@@ -29,7 +29,7 @@ export default function FAQ() {
     },
     {
       q: "How is delivery and payment handled?",
-      a: "Clicking 'Order via WhatsApp' drafts a pre-compiled allocation request. Our operations desk will confirm shipping credentials, provide UPI transfer options, or confirm delivery scheduling. Shipping is free nationwide."
+      a: "Clicking 'Order via WhatsApp' drafts a pre-compiled allocation request. Our operations desk will confirm shipping credentials, provide UPI transfer options, or confirm delivery scheduling. Standard shipping charges apply to all orders and will be confirmed during the verification process."
     }
   ]
 

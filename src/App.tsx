@@ -3,6 +3,7 @@ import { useState } from 'react'
 // Import visual assets directly from assets folder
 import logoImg from './assets/images/file_0000000091dc7230b92f4351f884cc4d.png'
 import productFrontImg from './assets/images/bg_removed.png'
+import productFrontWithBackdropImg from './assets/images/file_000000002b0471fab26c0f3c916aa348.png'
 import productBackImg from './assets/images/file_00000000174471fa9576a45bd8d2d610.png'
 import productLabelImg from './assets/images/file_0000000042a47207a577edf5c5381c1b.png'
 import threeTubsDarkImg from './assets/images/file_00000000a3d072078dca7a9b382fa2f0.png'
@@ -94,7 +95,7 @@ export default function App() {
       {/* 3. Product Buy Box & Checkout Details */}
       <ScrollReveal>
         <ProductBuyBox 
-          productFrontImg={productFrontImg}
+          productFrontImg={productFrontWithBackdropImg}
           productBackImg={productBackImg}
           productLabelImg={productLabelImg}
           launchOfferImg={launchOfferImg}
@@ -118,7 +119,7 @@ export default function App() {
 
       {/* 5.5. Cinematic Brand Showcase Video */}
       <ScrollReveal>
-        <BrandVideo />
+        <BrandVideo logoImg={logoImg} />
       </ScrollReveal>
 
       {/* 6. Image Carousel Exhibition */}

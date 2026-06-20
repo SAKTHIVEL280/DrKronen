@@ -91,10 +91,10 @@ export default function DosageCalculator() {
                     onChange={(e) => setWeight(Math.max(10, parseInt(e.target.value) || 0))}
                     className="w-full bg-transparent border-none outline-none px-2 py-2 text-zinc-100 font-serif font-bold text-lg text-center"
                     min="30"
-                    max="300"
+                    max="440"
                   />
                   <button 
-                    onClick={() => setWeight((w) => Math.min(300, w + 1))}
+                    onClick={() => setWeight((w) => Math.min(440, w + 1))}
                     className="p-2.5 text-zinc-500 hover:text-zinc-200 transition-premium cursor-pointer active:scale-90 mr-2"
                     aria-label="Increase Weight"
                   >
@@ -114,7 +114,7 @@ export default function DosageCalculator() {
                 <input
                   type="range"
                   min={weightUnit === 'kg' ? '40' : '90'}
-                  max={weightUnit === 'kg' ? '150' : '330'}
+                  max={weightUnit === 'kg' ? '200' : '440'}
                   value={weight}
                   onChange={(e) => setWeight(parseInt(e.target.value))}
                   className="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-zinc-300"

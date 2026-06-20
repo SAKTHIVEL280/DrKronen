@@ -24,7 +24,7 @@ export default function ProductBuyBox({
     const totalAmount = quantity * 399
     const originalAmount = quantity * 699
     const savings = originalAmount - totalAmount
-    const whatsappText = `Hi Dr. Kronen! I want to order:\n\n🛍️ *Dr. Kronen Micronized Creatine Monohydrate (250g)*\n📦 *Quantity:* ${quantity} Units\n🔥 *Offer Price:* ₹399/unit (Original: ₹699)\n💰 *Total Amount:* ₹${totalAmount} (Saved: ₹${savings}!)\n\nPlease share the QR code or payment options and expected delivery details. Thank you!`
+    const whatsappText = `Hi Dr. Kronen! I want to order:\n\n🛍️ *Dr. Kronen Micronized Creatine Monohydrate (250 grams)*\n📦 *Quantity:* ${quantity} Units\n🔥 *Offer Price:* ₹399/unit (Original: ₹699)\n💰 *Total Amount:* ₹${totalAmount} (Saved: ₹${savings}!)\n\nPlease share the QR code or payment options and expected delivery details. Thank you!`
     const encodedText = encodeURIComponent(whatsappText)
     window.open(`https://wa.me/918903632501?text=${encodedText}`, '_blank')
   }
@@ -107,7 +107,7 @@ export default function ProductBuyBox({
             </h3>
             
             <p className="text-xs text-zinc-500 tracking-widest uppercase font-mono">
-              Raw Unflavoured • 250g | 50 Servings
+              Raw Unflavoured • 250 grams | 50 Servings
             </p>
           </div>
 
@@ -164,7 +164,7 @@ export default function ProductBuyBox({
             </button>
             
             <div className="flex flex-wrap items-center justify-center gap-6 text-[10px] text-zinc-500 tracking-widest uppercase">
-              <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-zinc-500" /> Free Shipping India</span>
+              <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-zinc-500" /> Shipping Charges Apply</span>
               <span className="text-zinc-800">•</span>
               <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-zinc-500" /> UPI / Cash Verification</span>
               <span className="text-zinc-800">•</span>
