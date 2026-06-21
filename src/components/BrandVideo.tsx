@@ -117,7 +117,7 @@ export default function BrandVideo({ logoImg }: BrandVideoProps) {
           <img 
             src={logoImg} 
             alt="Dr. Kronen Logo" 
-            className="w-12 h-12 md:w-14 md:h-14 rounded-xl border border-zinc-800 bg-zinc-950/95 shadow-2xl p-1.5"
+            className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-md sm:rounded-lg md:rounded-xl border border-zinc-800 bg-zinc-950/95 shadow-2xl p-0.5 sm:p-1 md:p-1.5"
           />
         </div>
 
