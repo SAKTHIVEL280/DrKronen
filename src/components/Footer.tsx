@@ -72,9 +72,6 @@ export default function Footer({ logoImg }: FooterProps) {
       {/* Disclaimers & Copyright */}
       <div className="max-w-7xl mx-auto px-6 pt-10 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] text-zinc-600 tracking-wide">
         <div className="space-y-2 max-w-xl text-center md:text-left leading-relaxed">
-          <p>
-            *Disclaimer: These statements have not been evaluated by the Food and Drug Administration or FSSAI. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult a healthcare professional before use.
-          </p>
           <p className="font-mono">
             © {new Date().getFullYear()} Dr. Kronen Nutrition. All Rights Reserved. Built In Silence.
           </p>
