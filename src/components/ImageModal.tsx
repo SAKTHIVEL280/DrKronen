@@ -17,7 +17,7 @@ export default function ImageModal({ previewImage, onClose }: ImageModalProps) {
     >
       <div className="relative max-w-4xl max-h-[90vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
         <img 
-          src={previewImage || ''} 
+          src={previewImage || undefined} 
           alt="Fullscreen Preview" 
           className={`max-w-full max-h-[85vh] object-contain rounded-lg border border-white/10 transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isOpen ? 'opacity-100 scale-100 blur-none' : 'opacity-0 scale-[0.96] blur-sm'
