@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Activity, Info, Minus, Plus } from 'lucide-react'
+import { calculateDosage } from '@/utils/dosage'
 
 export default function DosageCalculator() {
   const [weight, setWeight] = useState<number>(70)
@@ -7,33 +8,12 @@ export default function DosageCalculator() {
   const [intensity, setIntensity] = useState<'moderate' | 'intense'>('intense')
   const [phase, setPhase] = useState<'loading' | 'maintenance'>('maintenance')
 
-  // Convert weight to kg for standard scaling
-  const weightInKg = weightUnit === 'lbs' ? weight * 0.453592 : weight
-
-  let dailyDosage: number
-  let waterRequirement: number
-  let formulaInfo: string
-
-  if (phase === 'loading') {
-    dailyDosage = 20
-    waterRequirement = 5.0
-    formulaInfo = 'Loading Strategy: Saturate your muscles quickly by taking 20g daily, split into 4 servings of 5g (Morning, Pre-Workout, Post-Workout, Evening) for 5-7 days.'
-  } else {
-    // Continuous scientific scaling: 0.05g/kg for moderate, 0.07g/kg for intense gym sessions
-    const multiplier = intensity === 'intense' ? 0.07 : 0.05
-    dailyDosage = weightInKg * multiplier
-    // Clamp values between 3g and 10g for safety and practicality, round to 1 decimal place
-    dailyDosage = Math.round(Math.max(3, Math.min(10, dailyDosage)) * 10) / 10
-
-    // Hydration: base fluid requirements (0.05L per kg weight) + exercise factor
-    const baseHydration = weightInKg * 0.05
-    const intensityAddon = intensity === 'intense' ? 0.5 : 0
-    waterRequirement = baseHydration + intensityAddon
-    // Clamp water target between 3L and 6L, round to 1 decimal place
-    waterRequirement = Math.round(Math.max(3, Math.min(6, waterRequirement)) * 10) / 10
-
-    formulaInfo = `Maintenance Strategy (Science-scaled): Take ${dailyDosage}g of micronized creatine monohydrate once daily (ideally post-workout) combined with a carbohydrate carrier to optimize muscle uptake.`
-  }
+  const { dailyDosage, waterRequirement, formulaInfo } = calculateDosage(
+    weight,
+    weightUnit,
+    intensity,
+    phase
+  )
 
   return (
     <section id="calculator" className="relative max-w-7xl mx-auto px-6 py-28 bg-dark-bg border-t border-zinc-800/80">

@@ -1,22 +1,17 @@
-import { InstagramIcon } from './Icons'
+import { InstagramIcon } from '@/components/ui/Icons'
+import { IMAGES, CONTACT_DETAILS } from '@/constants'
 
 interface PhilosophyProps {
-  threeTubsDarkImg: string
-  modelPosterImg: string
   onImageClick: (src: string) => void
 }
 
-export default function Philosophy({
-  threeTubsDarkImg,
-  modelPosterImg,
-  onImageClick
-}: PhilosophyProps) {
+export default function Philosophy({ onImageClick }: PhilosophyProps) {
   return (
     <section id="purity" className="relative py-28 bg-zinc-950 border-t border-zinc-800/80 overflow-hidden">
       {/* Editorial backdrop using subtle background image details */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 filter grayscale pointer-events-none" 
-        style={{ backgroundImage: `url(${threeTubsDarkImg})` }}
+        style={{ backgroundImage: `url(${IMAGES.threeTubsDark})` }}
       ></div>
       
       <div className="relative max-w-7xl mx-auto px-6">
@@ -45,7 +40,7 @@ export default function Philosophy({
 
             <div className="pt-4">
               <a 
-                href="https://www.instagram.com/dr.kronenofficial?igsh=OGx5aHIxMWQxb3V3" 
+                href={CONTACT_DETAILS.instagramUrl} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="inline-flex items-center gap-3 px-6 py-3 rounded-lg border border-zinc-800 hover:border-zinc-500 hover:text-zinc-100 text-zinc-300 transition-premium text-xs font-bold uppercase tracking-widest bg-zinc-900/30 btn-luxury"
@@ -60,10 +55,10 @@ export default function Philosophy({
           <div className="lg:col-span-6 relative flex items-center justify-center p-2">
             <div 
               className="relative w-full max-w-[440px] rounded-lg overflow-hidden border border-zinc-800/80 group cursor-pointer img-zoom-container" 
-              onClick={() => onImageClick(modelPosterImg)}
+              onClick={() => onImageClick(IMAGES.modelPoster)}
             >
               <img 
-                src={modelPosterImg} 
+                src={IMAGES.modelPoster} 
                 alt="Dr. Kronen Athlete Focus representation" 
                 className="w-full h-[480px] object-cover brightness-90 group-hover:brightness-100 transition-premium"
               />

@@ -1,11 +1,8 @@
 import { Play, Volume2, VolumeX } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
+import { IMAGES } from '@/constants'
 
-interface BrandVideoProps {
-  logoImg: string
-}
-
-export default function BrandVideo({ logoImg }: BrandVideoProps) {
+export default function BrandVideo() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -77,7 +74,7 @@ export default function BrandVideo({ logoImg }: BrandVideoProps) {
       {/* Elegant Video Container */}
       <div 
         ref={containerRef}
-        className="relative border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950 shadow-2xl group aspect-video"
+        className="relative border border-zinc-800 rounded-lg overflow-hidden bg-zinc-955 shadow-2xl group aspect-video"
       >
         <video
           ref={videoRef}
@@ -115,9 +112,9 @@ export default function BrandVideo({ logoImg }: BrandVideoProps) {
         {/* Brand / Video Watermark Overlay (Covers Google Veo Star Logo) */}
         <div className="absolute bottom-[12.5%] right-[7.2%] z-10 select-none pointer-events-none transition-all duration-300">
           <img 
-            src={logoImg} 
+            src={IMAGES.logo} 
             alt="Dr. Kronen Logo" 
-            className="w-5 h-5 sm:w-8 sm:h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded sm:rounded-lg md:rounded-xl border border-zinc-800 bg-zinc-950/95 shadow-2xl p-[1px] sm:p-1 md:p-1.5"
+            className="w-5 h-5 sm:w-8 sm:h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded sm:rounded-lg md:rounded-xl border border-zinc-800 bg-zinc-955/95 shadow-2xl p-[1px] sm:p-1 md:p-1.5"
           />
         </div>
 

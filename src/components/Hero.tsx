@@ -1,11 +1,11 @@
 import { ShieldCheck, Droplet, Info, Maximize2 } from 'lucide-react'
+import { IMAGES, PRODUCT_CONFIG } from '@/constants'
 
 interface HeroProps {
-  productFrontImg: string
   onImageClick: (src: string) => void
 }
 
-export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
+export default function Hero({ onImageClick }: HeroProps) {
   return (
     <section className="relative max-w-7xl mx-auto px-6 pt-16 pb-24 md:py-36 min-h-[75vh] flex flex-col justify-center">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -39,7 +39,7 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
               <span className="text-[10px] text-zinc-400 uppercase tracking-[0.18em] mt-1.5 font-sans font-semibold">Grams</span>
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-zinc-100 font-serif font-normal text-2xl tracking-wide">₹399</span>
+              <span className="text-zinc-100 font-serif font-normal text-2xl tracking-wide">₹{PRODUCT_CONFIG.price}</span>
               <span className="text-[10px] text-zinc-400 uppercase tracking-[0.18em] mt-1.5 font-sans font-semibold">Price</span>
             </div>
           </div>
@@ -70,10 +70,10 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
           <div className="relative w-full max-w-[450px] flex items-center justify-center p-4 animate-luxury-float overflow-visible">
             <div className="relative group rounded-lg overflow-visible">
               <img 
-                src={productFrontImg} 
+                src={IMAGES.productFront} 
                 alt="Dr. Kronen Creatine Tub Mockup" 
                 className="w-full max-h-[440px] object-contain relative cursor-pointer filter brightness-95 hover:brightness-100 scale-[1.2] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.25]"
-                onClick={() => onImageClick(productFrontImg)}
+                onClick={() => onImageClick(IMAGES.productFront)}
               />
               <div className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 text-[9px] uppercase tracking-widest text-zinc-300 opacity-0 group-hover:opacity-100 transition-premium z-10 whitespace-nowrap">
                 <Maximize2 className="w-3 h-3 text-zinc-500" /> Click to enlarge
@@ -96,4 +96,3 @@ export default function Hero({ productFrontImg, onImageClick }: HeroProps) {
     </section>
   )
 }
-

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import { FAQ_ITEMS } from '@/constants'
 
 export default function FAQ() {
   const [faqOpen, setFaqOpen] = useState<Record<number, boolean>>({
@@ -9,29 +10,6 @@ export default function FAQ() {
   const toggleFaq = (index: number) => {
     setFaqOpen((prev) => ({ ...prev, [index]: !prev[index] }))
   }
-
-  const faqs = [
-    {
-      q: "Why is Dr. Kronen Creatine priced so honestly (₹399/- for 250g)?",
-      a: "We operate on direct-to-consumer principles. Standard supplement labels allocate up to 60% of product margins to affiliate marketing, wholesale distributors, physical retail markups, and brand ambassadors. By bypassing intermediate distribution networks, we offer high-grade synthesis direct to athletes at the actual cost of chemistry."
-    },
-    {
-      q: "How pure is Dr. Kronen Creatine? Does it contain additives?",
-      a: "Our formula is 100% Raw Creatine Monohydrate. It contains zero fillers, sugar, artificial flavorings, or chemical flow agents. It is pharmaceutical-grade, micronized, and carries FSSAI Registration number 22426568000056."
-    },
-    {
-      q: "Is it suitable for vegetarians and vegans?",
-      a: "Yes. Dr. Kronen Creatine is synthesized from plant-derived raw materials and is completely vegan-friendly, carrying official vegetarian declaration credentials."
-    },
-    {
-      q: "Should I do a Loading Phase?",
-      a: "A loading strategy (20g daily split into 4 doses of 5g for 5-7 days) achieves complete muscular saturation inside one week. Alternatively, taking 3-5g daily (Maintenance Strategy) achieves equivalent saturation levels within 3-4 weeks. Use the dosage calculator to determine what fits your lifestyle."
-    },
-    {
-      q: "How is delivery and payment handled?",
-      a: "Clicking 'Order via WhatsApp' drafts a pre-compiled allocation request. Our operations desk will confirm shipping credentials, provide UPI transfer options, or confirm delivery scheduling. Standard shipping charges apply to all orders and will be confirmed during the verification process."
-    }
-  ]
 
   return (
     <section id="faqs" className="max-w-4xl mx-auto px-6 py-28">
@@ -46,7 +24,7 @@ export default function FAQ() {
       </div>
 
       <div className="space-y-4">
-        {faqs.map((faq, index) => (
+        {FAQ_ITEMS.map((faq, index) => (
           <div 
             key={index}
             className="border border-zinc-800 rounded-lg overflow-hidden bg-zinc-900/10 transition-premium"

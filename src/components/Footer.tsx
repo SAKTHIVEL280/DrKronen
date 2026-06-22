@@ -1,11 +1,8 @@
 import { Phone, Mail, MapPin } from 'lucide-react'
-import { InstagramIcon } from './Icons'
+import { InstagramIcon } from '@/components/ui/Icons'
+import { IMAGES, CONTACT_DETAILS, PRODUCT_CONFIG, NAV_LINKS } from '@/constants'
 
-interface FooterProps {
-  logoImg: string
-}
-
-export default function Footer({ logoImg }: FooterProps) {
+export default function Footer() {
   return (
     <footer className="relative bg-zinc-950 border-t border-zinc-800/80 pt-20 pb-12 font-sans text-xs">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-zinc-800 pb-16">
@@ -13,14 +10,14 @@ export default function Footer({ logoImg }: FooterProps) {
         {/* Col 1: Brand details */}
         <div className="md:col-span-4 space-y-4">
           <div className="flex items-center gap-3">
-            <img src={logoImg} alt="Dr. Kronen Logo" className="h-10 w-10 rounded-lg border border-zinc-850" />
+            <img src={IMAGES.logo} alt="Dr. Kronen Logo" className="h-10 w-10 rounded-lg border border-zinc-850" />
             <span className="font-serif font-semibold text-lg text-zinc-150 tracking-widest uppercase">DR. KRONEN</span>
           </div>
           <p className="text-zinc-500 leading-relaxed max-w-sm tracking-wide">
             Dr. Kronen is dedicated to athletic performance, chemical purity, and direct costing. Synthesized and packaged in India.
           </p>
           <div className="text-[10px] text-zinc-400 font-mono uppercase tracking-widest">
-            FSSAI Reg No: 22426568000056
+            FSSAI Reg No: {PRODUCT_CONFIG.fssaiRegNo}
           </div>
         </div>
 
@@ -28,13 +25,16 @@ export default function Footer({ logoImg }: FooterProps) {
         <div className="md:col-span-3 space-y-4">
           <h5 className="font-serif font-semibold text-zinc-200 uppercase tracking-widest">Useful Links</h5>
           <ul className="space-y-3 text-zinc-500">
-            <li><a href="#about" className="hover:text-zinc-100 transition-premium">Philosophy & Team</a></li>
-            <li><a href="#shop" className="hover:text-zinc-100 transition-premium">Direct Purchase</a></li>
-            <li><a href="#calculator" className="hover:text-zinc-100 transition-premium">Dosage Calculator</a></li>
-            <li><a href="#gallery" className="hover:text-zinc-100 transition-premium">Exhibition Gallery</a></li>
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="hover:text-zinc-100 transition-premium">
+                  {link.label}
+                </a>
+              </li>
+            ))}
             <li>
               <a 
-                href="https://www.instagram.com/dr.kronenofficial?igsh=OGx5aHIxMWQxb3V3" 
+                href={CONTACT_DETAILS.instagramUrl} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="hover:text-zinc-100 transition-premium"
@@ -51,18 +51,18 @@ export default function Footer({ logoImg }: FooterProps) {
           <ul className="space-y-4 text-zinc-500">
             <li className="flex items-start gap-3">
               <Phone className="w-4 h-4 text-zinc-650 shrink-0" strokeWidth={1.5} />
-              <span>WhatsApp Support: <strong className="text-zinc-350 font-mono">+91-8903632501</strong></span>
+              <span>WhatsApp Support: <strong className="text-zinc-350 font-mono">{CONTACT_DETAILS.whatsappDisplay}</strong></span>
             </li>
             <li className="flex items-start gap-3">
               <Mail className="w-4 h-4 text-zinc-650 shrink-0" strokeWidth={1.5} />
-              <span>Customer care: <strong className="text-zinc-350 font-mono">dr.kronenofficial@gmail.com</strong></span>
+              <span>Customer care: <strong className="text-zinc-350 font-mono">{CONTACT_DETAILS.email}</strong></span>
             </li>
             <li className="flex items-start gap-3 leading-relaxed">
               <MapPin className="w-4 h-4 text-zinc-650 shrink-0" strokeWidth={1.5} />
               <span>Packaged and Marketed by: <br />
-              <strong className="text-zinc-350">DR. KRONEN</strong><br />
-              Kalamani residency, Anna nagar, Erode,<br />
-              Tamilnadu - 638008</span>
+              <strong className="text-zinc-350">{CONTACT_DETAILS.address.name}</strong><br />
+              {CONTACT_DETAILS.address.line1}<br />
+              {CONTACT_DETAILS.address.line2}</span>
             </li>
           </ul>
         </div>
@@ -79,7 +79,7 @@ export default function Footer({ logoImg }: FooterProps) {
         
         <div className="flex gap-4">
           <a 
-            href="https://www.instagram.com/dr.kronenofficial?igsh=OGx5aHIxMWQxb3V3" 
+            href={CONTACT_DETAILS.instagramUrl} 
             target="_blank" 
             rel="noreferrer" 
             className="text-zinc-600 hover:text-zinc-300 transition-premium"

@@ -1,21 +1,10 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { InstagramIcon } from './Icons'
+import { InstagramIcon } from '@/components/ui/Icons'
+import { NAV_LINKS, CONTACT_DETAILS, IMAGES, PRODUCT_CONFIG } from '@/constants'
 
-interface HeaderProps {
-  logoImg: string
-}
-
-export default function Header({ logoImg }: HeaderProps) {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-  const navLinks = [
-    { href: '#about', label: 'Philosophy' },
-    { href: '#purity', label: 'The Purity' },
-    { href: '#calculator', label: 'Dosage Calculator' },
-    { href: '#gallery', label: 'Gallery' },
-    { href: '#faqs', label: 'FAQs' }
-  ]
 
   const handleLinkClick = () => {
     setMobileMenuOpen(false)
@@ -28,7 +17,7 @@ export default function Header({ logoImg }: HeaderProps) {
         {/* Logo and Brand Name */}
         <a href="#" className="flex items-center gap-3 group">
           <img 
-            src={logoImg} 
+            src={IMAGES.logo} 
             alt="Dr. Kronen Logo" 
             className="h-10 w-10 rounded-lg border border-zinc-800 group-hover:border-zinc-500 transition-premium"
           />
@@ -40,7 +29,7 @@ export default function Header({ logoImg }: HeaderProps) {
         
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-10 text-xs font-semibold uppercase tracking-widest">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <a 
               key={link.href}
               href={link.href} 
@@ -54,7 +43,7 @@ export default function Header({ logoImg }: HeaderProps) {
         {/* CTA & Mobile Hamburger */}
         <div className="flex items-center gap-3">
           <a 
-            href="https://www.instagram.com/dr.kronenofficial?igsh=OGx5aHIxMWQxb3V3" 
+            href={CONTACT_DETAILS.instagramUrl} 
             target="_blank" 
             rel="noreferrer"
             className="hidden md:flex items-center justify-center p-3 rounded-lg border border-zinc-800 text-zinc-400 hover:border-zinc-500 hover:text-zinc-100 transition-premium cursor-pointer"
@@ -67,7 +56,7 @@ export default function Header({ logoImg }: HeaderProps) {
             href="#shop" 
             className="hidden sm:inline-block px-6 py-3 rounded-lg text-xs font-bold border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-zinc-100 tracking-widest uppercase transition-premium bg-zinc-900/10 active:scale-95"
           >
-            Order Now • ₹399
+            Order Now • ₹{PRODUCT_CONFIG.price}
           </a>
 
           {/* Hamburger Icon for Mobile */}
@@ -90,7 +79,7 @@ export default function Header({ logoImg }: HeaderProps) {
         }`}
       >
         <nav className="flex flex-col px-6 py-8 space-y-6">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -105,10 +94,10 @@ export default function Header({ logoImg }: HeaderProps) {
             onClick={handleLinkClick}
             className="w-full text-center px-6 py-4 rounded-lg text-xs font-bold bg-brand-blue hover:bg-blue-700 text-white tracking-widest uppercase transition-premium btn-luxury"
           >
-            Order Now • ₹399
+            Order Now • ₹{PRODUCT_CONFIG.price}
           </a>
           <a
-            href="https://www.instagram.com/dr.kronenofficial?igsh=OGx5aHIxMWQxb3V3" 
+            href={CONTACT_DETAILS.instagramUrl} 
             target="_blank" 
             rel="noreferrer"
             className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-lg border border-zinc-800 text-zinc-350 text-xs font-bold uppercase tracking-widest transition-premium"

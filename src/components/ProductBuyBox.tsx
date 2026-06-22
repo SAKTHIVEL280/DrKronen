@@ -1,32 +1,26 @@
 import { useState } from 'react'
 import { MessageSquare, Minus, Plus, Check } from 'lucide-react'
+import { IMAGES, PRODUCT_CONFIG, CONTACT_DETAILS } from '@/constants'
 
 interface ProductBuyBoxProps {
-  productFrontImg: string
-  productBackImg: string
-  productLabelImg: string
-  launchOfferImg: string
   onImageClick: (src: string) => void
 }
 
-export default function ProductBuyBox({
-  productFrontImg,
-  productBackImg,
-  productLabelImg,
-  launchOfferImg,
-  onImageClick
-}: ProductBuyBoxProps) {
+export default function ProductBuyBox({ onImageClick }: ProductBuyBoxProps) {
   const [quantity, setQuantity] = useState<number>(1)
   const [activeSpecTab, setActiveSpecTab] = useState<'benefits' | 'nutrition' | 'purity'>('benefits')
-  const [activeProductImage, setActiveProductImage] = useState<string>(productFrontImg)
+  const [activeProductImage, setActiveProductImage] = useState<string>(IMAGES.productFrontBackdrop)
 
   const handleWhatsAppOrder = () => {
-    const totalAmount = quantity * 399
-    const originalAmount = quantity * 699
+    const unitPrice = PRODUCT_CONFIG.price
+    const originalPrice = PRODUCT_CONFIG.originalPrice
+    const totalAmount = quantity * unitPrice
+    const originalAmount = quantity * originalPrice
     const savings = originalAmount - totalAmount
-    const whatsappText = `Hi Dr. Kronen! I want to order:\n\n🛍️ *Dr. Kronen Micronized Creatine Monohydrate (250 grams)*\n📦 *Quantity:* ${quantity} Units\n🔥 *Offer Price:* ₹399/unit (Original: ₹699)\n💰 *Total Amount:* ₹${totalAmount} (Saved: ₹${savings}!)\n\nPlease share the QR code or payment options and expected delivery details. Thank you!`
+    
+    const whatsappText = `Hi Dr. Kronen! I want to order:\n\n🛍️ *Dr. Kronen ${PRODUCT_CONFIG.name} (${PRODUCT_CONFIG.subtitle.split('•')[1].trim().split('|')[0].trim()})*\n📦 *Quantity:* ${quantity} Units\n🔥 *Offer Price:* ₹${unitPrice}/unit (Original: ₹${originalPrice})\n💰 *Total Amount:* ₹${totalAmount} (Saved: ₹${savings}!)\n\nPlease share the QR code or payment options and expected delivery details. Thank you!`
     const encodedText = encodeURIComponent(whatsappText)
-    window.open(`https://wa.me/918903632501?text=${encodedText}`, '_blank')
+    window.open(`https://wa.me/${CONTACT_DETAILS.whatsappNumber}?text=${encodedText}`, '_blank')
   }
 
   return (
@@ -61,33 +55,33 @@ export default function ProductBuyBox({
           {/* Thumbnail Selectors */}
           <div className="grid grid-cols-3 gap-4">
             <button 
-              onClick={() => setActiveProductImage(productFrontImg)}
-              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === productFrontImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
+              onClick={() => setActiveProductImage(IMAGES.productFrontBackdrop)}
+              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === IMAGES.productFrontBackdrop ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
-              <img src={productFrontImg} alt="Front View" className="h-14 object-contain" />
+              <img src={IMAGES.productFrontBackdrop} alt="Front View" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Front</span>
             </button>
             
             <button 
-              onClick={() => setActiveProductImage(productBackImg)}
-              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === productBackImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
+              onClick={() => setActiveProductImage(IMAGES.productBack)}
+              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === IMAGES.productBack ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
-              <img src={productBackImg} alt="Back View" className="h-14 object-contain" />
+              <img src={IMAGES.productBack} alt="Back View" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Back</span>
             </button>
 
             <button 
-              onClick={() => setActiveProductImage(productLabelImg)}
-              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === productLabelImg ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
+              onClick={() => setActiveProductImage(IMAGES.productLabel)}
+              className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === IMAGES.productLabel ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
-              <img src={productLabelImg} alt="Nutritional Label" className="h-14 object-contain" />
+              <img src={IMAGES.productLabel} alt="Nutritional Label" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Label</span>
             </button>
           </div>
 
           {/* Promotional Card Visual */}
-          <div className="relative group img-zoom-container rounded-lg border border-zinc-800/80 mt-4 cursor-pointer" onClick={() => onImageClick(launchOfferImg)}>
-            <img src={launchOfferImg} alt="Special launch banner" className="w-full h-auto object-cover brightness-90 transition-premium" />
+          <div className="relative group img-zoom-container rounded-lg border border-zinc-800/80 mt-4 cursor-pointer" onClick={() => onImageClick(IMAGES.launchOffer)}>
+            <img src={IMAGES.launchOffer} alt="Special launch banner" className="w-full h-auto object-cover brightness-90 transition-premium" />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent flex flex-col justify-end p-5 z-10">
               <span className="text-[9px] uppercase text-zinc-400 tracking-[0.2em] font-semibold">Verification batch</span>
               <span className="text-zinc-200 text-xs tracking-wide mt-1">Direct laboratory synthesis allocation</span>
@@ -103,21 +97,21 @@ export default function ProductBuyBox({
             </span>
             
             <h3 className="font-serif font-light text-3xl sm:text-4xl text-zinc-100 uppercase tracking-wide">
-              Micronized Creatine Monohydrate
+              {PRODUCT_CONFIG.name}
             </h3>
             
             <p className="text-xs text-zinc-500 tracking-widest uppercase font-mono">
-              Raw Unflavoured • 250 grams | 50 Servings
+              {PRODUCT_CONFIG.subtitle}
             </p>
           </div>
 
           {/* Clean Muted Pricing */}
           <div className="flex items-baseline gap-4 border-b border-zinc-800/80 pb-8">
             <span className="font-serif font-normal text-3xl sm:text-4xl text-zinc-100">
-              ₹399
+              ₹{PRODUCT_CONFIG.price}
             </span>
             <span className="text-zinc-650 line-through text-base font-mono">
-              ₹699
+              ₹{PRODUCT_CONFIG.originalPrice}
             </span>
             <span className="text-zinc-400 text-xs tracking-widest uppercase ml-2">
               Direct Synthesis Price
@@ -147,7 +141,7 @@ export default function ProductBuyBox({
               </div>
               
               <div className="flex flex-col text-xs text-zinc-500 tracking-wide gap-1">
-                <span>Subtotal: <strong className="text-zinc-300 font-mono">₹{quantity * 399}</strong></span>
+                <span>Subtotal: <strong className="text-zinc-300 font-mono">₹{quantity * PRODUCT_CONFIG.price}</strong></span>
                 <span>Allocation: <strong className="text-zinc-300 font-mono">{quantity * 50} servings</strong></span>
               </div>
             </div>
@@ -248,7 +242,7 @@ export default function ProductBuyBox({
                     </div>
                   </div>
                   <div className="text-[10px] text-zinc-500 italic mt-2 font-sans">
-                    *Packaged & Marketed by: Dr. Kronen. Anna Nagar, Erode, Tamilnadu - 638008.
+                    *Packaged & Marketed by: {CONTACT_DETAILS.address.name}. {CONTACT_DETAILS.address.line1} {CONTACT_DETAILS.address.line2}
                   </div>
                 </div>
               )}
@@ -261,7 +255,7 @@ export default function ProductBuyBox({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-mono text-[11px]">
                     <div className="p-3 rounded bg-zinc-900 border border-zinc-800">
                       <span className="block text-[9px] font-bold text-zinc-500 uppercase tracking-widest mb-1 font-sans">FSSAI Number</span>
-                      <span className="text-zinc-305">22426568000056</span>
+                      <span className="text-zinc-305">{PRODUCT_CONFIG.fssaiRegNo}</span>
                     </div>
                     <div className="p-3 rounded bg-zinc-900 border border-zinc-800">
                       <span className="block text-[9px] font-bold text-zinc-500 uppercase tracking-widest mb-1 font-sans">Purity Grade</span>
