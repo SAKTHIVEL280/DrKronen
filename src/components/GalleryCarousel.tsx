@@ -90,7 +90,7 @@ export default function GalleryCarousel({ onImageClick }: GalleryCarouselProps) 
                 onClick={() => setGalleryIndex(idx)}
                 className={`relative h-14 rounded-lg overflow-hidden border transition-premium cursor-pointer ${idx === galleryIndex ? 'border-zinc-300 scale-95' : 'border-zinc-850 opacity-60 hover:opacity-100'}`}
               >
-                <img src={img.src} alt="" className="w-full h-full object-cover" />
+                <img src={img.src} alt={`Dr. Kronen Creatine Monohydrate Exhibition Thumbnail ${idx + 1}: ${img.title}`} className="w-full h-full object-cover" />
               </button>
             ))}
           </div>

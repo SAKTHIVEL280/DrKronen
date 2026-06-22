@@ -16,9 +16,10 @@ export default function Hero({ onImageClick }: HeroProps) {
             Pure Creatine Monohydrate • 250g
           </div>
 
-          <h1 className="font-serif font-normal text-4xl sm:text-5xl xl:text-6xl leading-[1.25] text-metallic tracking-[0.08em] uppercase opacity-0 animate-slide-up animation-delay-100 animation-fill-both">
+          <h1 className="sr-only">Dr. Kronen | Pure Micronized Creatine Monohydrate</h1>
+          <h2 className="font-serif font-normal text-4xl sm:text-5xl xl:text-6xl leading-[1.25] text-metallic tracking-[0.08em] uppercase opacity-0 animate-slide-up animation-delay-100 animation-fill-both">
             BUILT IN SILENCE
-          </h1>
+          </h2>
 
           <p className="text-zinc-300 text-sm leading-relaxed tracking-wide opacity-0 animate-slide-up animation-delay-200 animation-fill-both">
             Sports nutrition formulated for athletes, gym enthusiasts, and individuals committed to consistent progress. Uncompromised chemical purity. Direct source. Zero fillers.

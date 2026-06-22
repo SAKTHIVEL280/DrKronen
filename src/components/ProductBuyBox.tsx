@@ -43,7 +43,7 @@ export default function ProductBuyBox({ onImageClick }: ProductBuyBoxProps) {
             <img 
               key={activeProductImage}
               src={activeProductImage} 
-              alt="Active Product View" 
+              alt="Dr. Kronen Micronized Creatine Monohydrate Active Batch View" 
               className="max-h-[380px] object-contain cursor-pointer filter brightness-95 animate-scale-up"
               onClick={() => onImageClick(activeProductImage)}
             />
@@ -58,7 +58,7 @@ export default function ProductBuyBox({ onImageClick }: ProductBuyBoxProps) {
               onClick={() => setActiveProductImage(IMAGES.productFrontBackdrop)}
               className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === IMAGES.productFrontBackdrop ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
-              <img src={IMAGES.productFrontBackdrop} alt="Front View" className="h-14 object-contain" />
+              <img src={IMAGES.productFrontBackdrop} alt="Dr. Kronen Creatine Monohydrate Front Product View with Backdrop" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Front</span>
             </button>
             
@@ -66,7 +66,7 @@ export default function ProductBuyBox({ onImageClick }: ProductBuyBoxProps) {
               onClick={() => setActiveProductImage(IMAGES.productBack)}
               className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === IMAGES.productBack ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
-              <img src={IMAGES.productBack} alt="Back View" className="h-14 object-contain" />
+              <img src={IMAGES.productBack} alt="Dr. Kronen Creatine Monohydrate Back Label Packaging View" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Back</span>
             </button>
 
@@ -74,14 +74,14 @@ export default function ProductBuyBox({ onImageClick }: ProductBuyBoxProps) {
               onClick={() => setActiveProductImage(IMAGES.productLabel)}
               className={`p-2 rounded-lg border transition-premium flex flex-col items-center cursor-pointer hairline-hover ${activeProductImage === IMAGES.productLabel ? 'border-brand-blue bg-brand-blue/5' : 'border-zinc-850'}`}
             >
-              <img src={IMAGES.productLabel} alt="Nutritional Label" className="h-14 object-contain" />
+              <img src={IMAGES.productLabel} alt="Dr. Kronen Creatine Monohydrate Nutritional Label and Certification Detail" className="h-14 object-contain" />
               <span className="text-[9px] uppercase tracking-widest font-medium text-zinc-500 mt-2">Label</span>
             </button>
           </div>
 
           {/* Promotional Card Visual */}
           <div className="relative group img-zoom-container rounded-lg border border-zinc-800/80 mt-4 cursor-pointer" onClick={() => onImageClick(IMAGES.launchOffer)}>
-            <img src={IMAGES.launchOffer} alt="Special launch banner" className="w-full h-auto object-cover brightness-90 transition-premium" />
+            <img src={IMAGES.launchOffer} alt="Dr. Kronen Creatine Special Launch Offer and Laboratory Verification Certificate" className="w-full h-auto object-cover brightness-90 transition-premium" />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent flex flex-col justify-end p-5 z-10">
               <span className="text-[9px] uppercase text-zinc-400 tracking-[0.2em] font-semibold">Verification batch</span>
               <span className="text-zinc-200 text-xs tracking-wide mt-1">Direct laboratory synthesis allocation</span>
@@ -219,28 +219,32 @@ export default function ProductBuyBox({ onImageClick }: ProductBuyBoxProps) {
 
               {activeSpecTab === 'nutrition' && (
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4 border-b border-zinc-800 pb-2 text-[9px] uppercase tracking-wider font-semibold text-zinc-500">
-                    <span>Component details (per 5g)</span>
-                    <span className="text-right">Quantity</span>
-                  </div>
-                  <div className="space-y-3 font-mono text-[11px]">
-                    <div className="flex justify-between border-b border-zinc-900 py-1">
-                      <span className="text-zinc-200">Creatine Monohydrate</span>
-                      <span className="text-zinc-200 font-bold">5000 mg</span>
-                    </div>
-                    <div className="flex justify-between border-b border-zinc-900 py-1">
-                      <span>Energy</span>
-                      <span>0 kcal</span>
-                    </div>
-                    <div className="flex justify-between border-b border-zinc-900 py-1">
-                      <span>Protein</span>
-                      <span>0 g</span>
-                    </div>
-                    <div className="flex justify-between border-b border-zinc-900 py-1">
-                      <span>Carbohydrates / Fat / Sodium</span>
-                      <span>0 g</span>
-                    </div>
-                  </div>
+                  <table className="w-full border-collapse font-mono text-[11px]">
+                    <thead>
+                      <tr className="border-b border-zinc-800 text-[9px] uppercase tracking-wider font-semibold text-zinc-500 text-left">
+                        <th className="pb-2 font-semibold">Component details (per 5g)</th>
+                        <th className="pb-2 font-semibold text-right">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-zinc-900 text-zinc-400">
+                        <td className="py-2 text-zinc-200">Creatine Monohydrate</td>
+                        <td className="py-2 text-zinc-200 font-bold text-right">5000 mg</td>
+                      </tr>
+                      <tr className="border-b border-zinc-900 text-zinc-450">
+                        <td className="py-2">Energy</td>
+                        <td className="py-2 text-right">0 kcal</td>
+                      </tr>
+                      <tr className="border-b border-zinc-900 text-zinc-455">
+                        <td className="py-2">Protein</td>
+                        <td className="py-2 text-right">0 g</td>
+                      </tr>
+                      <tr className="border-b border-zinc-900 text-zinc-460">
+                        <td className="py-2">Carbohydrates / Fat / Sodium</td>
+                        <td className="py-2 text-right">0 g</td>
+                      </tr>
+                    </tbody>
+                  </table>
                   <div className="text-[10px] text-zinc-500 italic mt-2 font-sans">
                     *Packaged & Marketed by: {CONTACT_DETAILS.address.name}. {CONTACT_DETAILS.address.line1} {CONTACT_DETAILS.address.line2}
                   </div>
